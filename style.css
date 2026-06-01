@@ -241,6 +241,15 @@ body {
   margin-bottom: 2rem;
 }
 
+.section-blurb {
+  font-family: var(--font-body);
+  font-style: italic;
+  color: var(--text-secondary);
+  max-width: 580px;
+  line-height: 1.8;
+  margin-bottom: 0.5rem;
+}
+
 .section-link {
   display: inline-block;
   margin-top: 1.5rem;
