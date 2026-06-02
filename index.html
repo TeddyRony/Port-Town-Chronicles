@@ -102,7 +102,7 @@
     /* ── HERO TEXT ── */
     .hero-eyebrow {
       font-family: var(--font-heading);
-      font-size: 0.65rem;
+      font-size: 0.85rem;
       letter-spacing: 0.4em;
       text-transform: uppercase;
       color: var(--ember);
@@ -114,7 +114,7 @@
 
     .hero-title {
       font-family: var(--font-display);
-      font-size: clamp(2.2rem, 6vw, 4.2rem);
+      font-size: clamp(2.8rem, 7vw, 5rem);
       font-weight: 900;
       color: var(--gold-light);
       line-height: 1.1;
@@ -130,7 +130,7 @@
 
     .hero-subtitle {
       font-family: var(--font-heading);
-      font-size: 0.7rem;
+      font-size: 0.9rem;
       letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--text-muted);
@@ -169,9 +169,9 @@
     .hero-lore {
       font-family: var(--font-body);
       font-style: italic;
-      font-size: 1.05rem;
+      font-size: 1.2rem;
       color: var(--text-secondary);
-      max-width: 520px;
+      max-width: 560px;
       line-height: 1.85;
       opacity: 0;
       animation: fadeUp 0.8s ease forwards;
@@ -184,7 +184,7 @@
       left: 50%;
       transform: translateX(-50%);
       font-family: var(--font-heading);
-      font-size: 0.55rem;
+      font-size: 0.75rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--text-muted);
@@ -210,12 +210,12 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 52px;
+      height: 60px;
     }
 
     .nav-brand {
       font-family: var(--font-display);
-      font-size: 0.75rem;
+      font-size: 1rem;
       font-weight: 700;
       color: var(--gold);
       text-decoration: none;
@@ -229,14 +229,14 @@
 
     .nav-link {
       font-family: var(--font-heading);
-      font-size: 0.65rem;
+      font-size: 0.85rem;
       font-weight: 500;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--text-secondary);
       text-decoration: none;
-      padding: 0 1rem;
-      height: 52px;
+      padding: 0 1.25rem;
+      height: 60px;
       display: flex;
       align-items: center;
       border-right: 1px solid var(--border);
@@ -254,7 +254,7 @@
 
     .sections-eyebrow {
       font-family: var(--font-heading);
-      font-size: 0.6rem;
+      font-size: 0.8rem;
       letter-spacing: 0.35em;
       text-transform: uppercase;
       color: var(--text-muted);
@@ -264,20 +264,18 @@
 
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
     }
-
-    /* Guild card spans full width */
-    .card--guild { grid-column: 1 / -1; }
 
     .card {
       position: relative;
       background: var(--surface);
       border: 1px solid var(--border);
-      padding: 2.5rem 3rem;
+      padding: 2.5rem 2.5rem 3rem;
       text-decoration: none;
-      display: block;
+      display: flex;
+      flex-direction: column;
       overflow: hidden;
       transition: border-color 0.3s, background 0.3s;
       cursor: pointer;
@@ -315,11 +313,10 @@
     .card--journal::after   { background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(184,92,42,0.1), transparent); }
     .card--tools::before    { background: linear-gradient(to right, transparent, var(--crystal-dim), transparent); }
     .card--tools::after     { background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(74,122,155,0.1), transparent); }
-    .card--vault::before    { background: linear-gradient(to right, transparent, var(--gold-dim), transparent); }
 
     .card-number {
       font-family: var(--font-heading);
-      font-size: 0.55rem;
+      font-size: 0.75rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--text-muted);
@@ -327,7 +324,7 @@
     }
 
     .card-icon {
-      font-size: 2rem;
+      font-size: 2.5rem;
       margin-bottom: 1rem;
       display: block;
       filter: grayscale(0.3);
@@ -335,7 +332,7 @@
 
     .card-title {
       font-family: var(--font-display);
-      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      font-size: clamp(1.2rem, 1.8vw, 1.6rem);
       font-weight: 700;
       color: var(--gold-light);
       line-height: 1.2;
@@ -348,16 +345,16 @@
     .card-desc {
       font-family: var(--font-body);
       font-style: italic;
-      font-size: 0.95rem;
+      font-size: 1rem;
       color: var(--text-secondary);
       line-height: 1.75;
-      max-width: 480px;
       margin-bottom: 1.5rem;
+      flex: 1;
     }
 
     .card-arrow {
       font-family: var(--font-heading);
-      font-size: 0.65rem;
+      font-size: 0.8rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--gold-dim);
@@ -372,55 +369,6 @@
     }
     .card--journal:hover .card-arrow { color: var(--ember); }
     .card--tools:hover   .card-arrow { color: var(--crystal); }
-
-    /* Guild card layout — two columns inside */
-    .card--guild .card-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: start;
-    }
-
-    .card--guild .card-sub-links {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      justify-content: center;
-    }
-
-    .sub-link {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem 1.25rem;
-      background: var(--surface-3);
-      border: 1px solid var(--border);
-      text-decoration: none;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .sub-link:hover {
-      border-color: var(--border-light);
-      background: rgba(201,168,76,0.04);
-    }
-
-    .sub-link-icon { font-size: 1.2rem; }
-
-    .sub-link-text .sub-link-title {
-      font-family: var(--font-heading);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      display: block;
-      margin-bottom: 0.2rem;
-    }
-    .sub-link-text .sub-link-desc {
-      font-family: var(--font-body);
-      font-style: italic;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
 
     /* ── FOOTER ── */
     .site-footer {
@@ -437,7 +385,7 @@
 
     .footer-guild {
       font-family: var(--font-heading);
-      font-size: 0.7rem;
+      font-size: 0.85rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--gold-dim);
@@ -447,14 +395,14 @@
     .footer-tagline {
       font-family: var(--font-body);
       font-style: italic;
-      font-size: 0.85rem;
+      font-size: 1rem;
       color: var(--text-muted);
       margin-bottom: 0.25rem;
     }
 
     .footer-note {
       font-family: var(--font-heading);
-      font-size: 0.55rem;
+      font-size: 0.7rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--text-muted);
@@ -492,17 +440,30 @@
     .card:nth-child(4) { animation-delay: 0.4s; }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 720px) {
+    @media (max-width: 900px) {
       .cards-grid { grid-template-columns: 1fr; }
-      .card--guild { grid-column: 1; }
-      .card--guild .card-inner { grid-template-columns: 1fr; gap: 1.5rem; }
       .nav-brand { display: none; }
-      .nav-link { font-size: 0.55rem; padding: 0 0.6rem; }
+      .nav-link { font-size: 0.7rem; padding: 0 0.75rem; }
       .hero-title { font-size: 2rem; }
     }
   </style>
 </head>
 <body>
+
+  <!-- TOP NAV -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">Freeport Chronicles</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="journal.html" class="nav-link">Journal</a>
+        <a href="guild.html" class="nav-link">The Guild</a>
+        <a href="tools.html" class="nav-link">Tools</a>
+        <a href="vault.html" class="nav-link">The Vault</a>
+        <a href="lore.html" class="nav-link">Lore</a>
+      </div>
+    </div>
+  </nav>
 
   <!-- HERO -->
   <section class="hero">
@@ -599,54 +560,19 @@
 
   </section>
 
-  <!-- STICKY NAV -->
-  <nav class="site-nav">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-brand">Freeport Chronicles</a>
-      <div class="nav-links">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="journal.html" class="nav-link">Journal</a>
-        <a href="guild.html" class="nav-link">The Guild</a>
-        <a href="tools.html" class="nav-link">Tools</a>
-        <a href="vault.html" class="nav-link">The Vault</a>
-        <a href="lore.html" class="nav-link">Lore</a>
-      </div>
-    </div>
-  </nav>
-
   <!-- SECTION CARDS -->
   <div class="sections">
     <p class="sections-eyebrow">Navigate the Chronicles</p>
 
     <div class="cards-grid">
 
-      <!-- THE GUILD (full width) -->
+      <!-- THE GUILD -->
       <a href="guild.html" class="card card--guild">
-        <div class="card-inner">
-          <div>
-            <p class="card-number">Section I</p>
-            <span class="card-icon">⚔️</span>
-            <h2 class="card-title">The Guild</h2>
-            <p class="card-desc">The men and women who operate under Tedronai's banner in Freeport. Their histories, their capabilities, and their standing within the guild — from founding members to those still earning trust.</p>
-            <p class="card-arrow">Enter the Guild →</p>
-          </div>
-          <div class="card-sub-links">
-            <a href="roster.html" class="sub-link">
-              <span class="sub-link-icon">🧙</span>
-              <div class="sub-link-text">
-                <span class="sub-link-title">Party Roster</span>
-                <span class="sub-link-desc">Members, classes, and standing</span>
-              </div>
-            </a>
-            <a href="vault.html" class="sub-link">
-              <span class="sub-link-icon">🔒</span>
-              <div class="sub-link-text">
-                <span class="sub-link-title">The Vault</span>
-                <span class="sub-link-desc">Guild inventory · Check in &amp; out</span>
-              </div>
-            </a>
-          </div>
-        </div>
+        <p class="card-number">Section I</p>
+        <span class="card-icon">⚔️</span>
+        <h2 class="card-title">The Guild</h2>
+        <p class="card-desc">The men and women who operate under Tedronai's banner in Freeport. Their histories, capabilities, and standing — from founding members to those still earning trust. Also home to the Guild Vault.</p>
+        <p class="card-arrow">Enter the Guild →</p>
       </a>
 
       <!-- STILGAR'S JOURNAL -->

@@ -3,48 +3,99 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Roster — The Freeport Chronicles</title>
+  <title>Party Roster — The Freeport Chronicles</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/shared.css" />
 </head>
 <body>
-  <div class="noise-overlay"></div>
-  <header class="site-header">
-    <div class="header-inner">
-      <div class="site-brand">
-        <div class="brand-emblem">✦</div>
-        <div class="brand-text">
-          <h1 class="site-title">The Freeport Chronicles</h1>
-          <p class="site-subtitle">A Record of the Guild — Compiled in Service &amp; in Blood</p>
-        </div>
-        <div class="brand-emblem">✦</div>
-      </div>
-      <nav class="site-nav">
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">Freeport Chronicles</a>
+      <div class="nav-links">
         <a href="index.html" class="nav-link">Home</a>
-        <a href="chronicles.html" class="nav-link">Chronicles</a>
-        <a href="roster.html" class="nav-link active">Party Roster</a>
-        <a href="lore.html" class="nav-link">Lore &amp; Wiki</a>
-        <a href="homebrew.html" class="nav-link">Homebrew Rules</a>
-        <a href="maps.html" class="nav-link">Maps</a>
-      </nav>
+        <a href="journal.html" class="nav-link">Journal</a>
+        <a href="guild.html" class="nav-link active">The Guild</a>
+        <a href="tools.html" class="nav-link">Tools</a>
+        <a href="vault.html" class="nav-link">The Vault</a>
+        <a href="lore.html" class="nav-link">Lore</a>
+      </div>
     </div>
-  </header>
-  <main class="site-main">
-    <div class="page-header">
-      <p class="page-eyebrow">The Freeport Chronicles</p>
-      <h2 class="page-title"></h2>
-      <p class="page-desc"></p>
+  </nav>
+  <main class="page-main">
+    <header class="page-header">
+      <p class="page-eyebrow">The Guild · Active Members</p>
+      <h1 class="page-title">Party Roster</h1>
+      <p class="page-desc">Those who operate under the guild banner. Full profiles updated as characters are documented.</p>
+    </header>
+    <div class="page-content">
+      <div class="roster-grid">
+
+        <div class="roster-card">
+          <p class="roster-card-standing">Guild Member</p>
+          <h3 class="roster-card-name">Stilgar</h3>
+          <p class="roster-card-class">Myrmidon · In service to Tedronai</p>
+          <p class="roster-card-body">Field commander and record-keeper for Tedronai's operations in Freeport. Longest-serving operative. Reluctant leader by appointment — equally comfortable as just another blade on a team. Manages Tedronai's holdings when not in the field.</p>
+        </div>
+
+        <div class="roster-card">
+          <p class="roster-card-standing">Guild Member</p>
+          <h3 class="roster-card-name">Juniper</h3>
+          <p class="roster-card-class">Wood Elf Druid · Level 11</p>
+          <p class="roster-card-body">Forest druid and wanderer. 5'5", 112 lbs, red hair, green eyes. Worships Ehlonna. Carries a quarterstaff. Languages: Common, Druidic, Sylvan, Elvish, Treant, Goblin.</p>
+        </div>
+
+        <div class="roster-card">
+          <p class="roster-card-standing">Guild Member</p>
+          <h3 class="roster-card-name">Rancor</h3>
+          <p class="roster-card-class">Barbarian</p>
+          <p class="roster-card-body">Details to be added.</p>
+        </div>
+
+        <div class="roster-card">
+          <p class="roster-card-standing">Guild Member</p>
+          <h3 class="roster-card-name">Pyril</h3>
+          <p class="roster-card-class">Cleric</p>
+          <p class="roster-card-body">Details to be added.</p>
+        </div>
+
+        <div class="roster-card">
+          <p class="roster-card-standing">Guild Member</p>
+          <h3 class="roster-card-name">Keyo</h3>
+          <p class="roster-card-class">Monk</p>
+          <p class="roster-card-body">Details to be added.</p>
+        </div>
+
+        <div class="roster-card">
+          <p class="roster-card-standing">Guild Member</p>
+          <h3 class="roster-card-name">Diana</h3>
+          <p class="roster-card-class">Ranger</p>
+          <p class="roster-card-body">Details to be added.</p>
+        </div>
+
+        <div class="roster-card roster-card--provisional">
+          <p class="roster-card-standing provisional">Provisional</p>
+          <h3 class="roster-card-name">Slip</h3>
+          <p class="roster-card-class">Rogue · Contracted</p>
+          <p class="roster-card-body">A contracted thief. In it for the coin — her words. Currently under evaluation. Has demonstrated resourcefulness under pressure.</p>
+        </div>
+
+        <div class="roster-card roster-card--provisional">
+          <p class="roster-card-standing provisional">Provisional</p>
+          <h3 class="roster-card-name">The Wizard</h3>
+          <p class="roster-card-class">Wizard · Stand-in</p>
+          <p class="roster-card-body">Rolled up on short notice when a character sheet went missing. Attempted to greet winged demon-serpents in Abyssal. Results were instructive. Full name pending.</p>
+        </div>
+
+      </div>
     </div>
-    <div class="stub-notice">This section is being built out. Check back after the next session.</div>
   </main>
   <footer class="site-footer">
-    <div class="footer-inner">
-      <p class="footer-guild">[ Guild Name Pending ]</p>
-      <p class="footer-tagline">Freeport · The Guild · Est. in blood and better judgment</p>
-      <p class="footer-note">A living record. Updated after every session.</p>
-    </div>
+    <p class="footer-emblem">✦</p>
+    <p class="footer-guild">[ Guild Name Pending ]</p>
+    <p class="footer-tagline">Freeport · Est. in blood and better judgment</p>
+    <p class="footer-note">A living record — updated after every session</p>
   </footer>
 </body>
 </html>
