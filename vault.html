@@ -9,38 +9,55 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/shared.css" />
   <style>
-    .vault-controls { display:flex; flex-wrap:wrap; gap:.75rem; margin-bottom:2rem; align-items:center; }
-    .vault-search { flex:1; min-width:200px; background:var(--surface); border:1px solid var(--border); color:var(--text-primary); font-family:var(--font-heading); font-size:.8rem; letter-spacing:.08em; padding:.6rem 1rem; outline:none; transition:border-color .2s; }
+    .vault-controls { display:flex; flex-wrap:wrap; gap:.75rem; margin-bottom:.75rem; align-items:center; }
+    .vault-search { flex:1; min-width:220px; background:var(--surface); border:1px solid var(--border); color:var(--text-primary); font-family:var(--font-heading); font-size:.9rem; letter-spacing:.08em; padding:.7rem 1.1rem; outline:none; transition:border-color .2s; }
     .vault-search::placeholder { color:var(--text-muted); }
     .vault-search:focus { border-color:var(--border-light); }
-    .filter-group { display:flex; flex-wrap:wrap; gap:.4rem; }
-    .filter-btn { font-family:var(--font-heading); font-size:.65rem; letter-spacing:.12em; text-transform:uppercase; color:var(--text-muted); background:var(--surface); border:1px solid var(--border); padding:.4rem .85rem; cursor:pointer; transition:all .15s; white-space:nowrap; }
+    .filter-row { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:.5rem; }
+    .filter-btn { font-family:var(--font-heading); font-size:.75rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted); background:var(--surface); border:1px solid var(--border); padding:.45rem 1rem; cursor:pointer; transition:all .15s; white-space:nowrap; }
     .filter-btn:hover { color:var(--text-secondary); border-color:var(--border-light); }
     .filter-btn.active { color:var(--gold); border-color:var(--gold-dim); background:rgba(201,168,76,.06); }
-    .vault-stats { font-family:var(--font-heading); font-size:.7rem; letter-spacing:.12em; color:var(--text-muted); margin-bottom:1.5rem; }
+    .subfilter-row { display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:1.25rem; min-height:2rem; }
+    .subfilter-btn { font-family:var(--font-heading); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-muted); background:var(--surface); border:1px solid var(--border); padding:.35rem .8rem; cursor:pointer; transition:all .15s; white-space:nowrap; }
+    .subfilter-btn:hover { color:var(--text-secondary); border-color:var(--border-light); }
+    .subfilter-btn.active { color:var(--crystal); border-color:var(--crystal-dim); background:rgba(74,122,155,.06); }
+    .vault-stats { font-family:var(--font-heading); font-size:.8rem; letter-spacing:.1em; color:var(--text-muted); margin-bottom:1.25rem; }
     .vault-stats span { color:var(--gold-dim); }
     .vault-table-wrap { overflow-x:auto; }
-    table { width:100%; border-collapse:collapse; font-family:var(--font-body); font-size:.95rem; }
+    table { width:100%; border-collapse:collapse; font-family:var(--font-body); font-size:1rem; }
     thead tr { border-bottom:1px solid var(--border-light); }
-    th { font-family:var(--font-heading); font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--text-muted); padding:.5rem 1rem; text-align:left; font-weight:500; white-space:nowrap; }
-    td { padding:.65rem 1rem; border-bottom:1px solid var(--border); vertical-align:middle; color:var(--text-primary); }
+    th { font-family:var(--font-heading); font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; color:var(--text-muted); padding:.6rem 1rem; text-align:left; font-weight:500; white-space:nowrap; }
+    td { padding:.75rem 1rem; border-bottom:1px solid var(--border); vertical-align:middle; }
     tr:hover td { background:var(--surface-2); }
-    .item-name-cell { font-style:italic; }
-    .item-name-cell.cursed { color:#c05050; }
-    .item-name-cell.legendary { color:#BA7517; }
-    .item-name-cell.magical { color:#6aabb8; }
-    .item-name-cell.named { color:var(--gold-light); }
-    .rarity-pip { display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:6px; vertical-align:middle; flex-shrink:0; }
-    .pip-standard { background:var(--text-muted); }
-    .pip-magical { background:#6aabb8; }
-    .pip-legendary { background:#BA7517; }
-    .pip-cursed { background:#c05050; }
-    .pip-named { background:var(--gold); }
-    .cat-tag { font-family:var(--font-heading); font-size:.58rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted); white-space:nowrap; }
-    .qty-cell { font-family:var(--font-heading); font-size:.8rem; color:var(--text-muted); text-align:center; }
-    .no-results { text-align:center; padding:3rem; font-family:var(--font-body); font-style:italic; color:var(--text-muted); }
-    .legend { display:flex; flex-wrap:wrap; gap:1rem; margin-bottom:2rem; }
-    .legend-item { display:flex; align-items:center; gap:.4rem; font-family:var(--font-heading); font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-muted); }
+    .item-name-cell { font-style:italic; font-size:1rem; }
+    .item-name-cell.r-standard  { color:var(--text-primary); }
+    .item-name-cell.r-plus1     { color:#5a9e5a; }
+    .item-name-cell.r-plus2     { color:#6aabb8; }
+    .item-name-cell.r-plus4     { color:#9b6fd4; }
+    .item-name-cell.r-named     { color:var(--gold-light); }
+    .item-name-cell.r-legendary { color:#c97a2a; }
+    .item-name-cell.r-cursed    { color:#c05050; }
+    .rarity-pip { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:7px; vertical-align:middle; flex-shrink:0; }
+    .pip-standard  { background:var(--text-muted); }
+    .pip-plus1     { background:#5a9e5a; }
+    .pip-plus2     { background:#6aabb8; }
+    .pip-plus4     { background:#9b6fd4; }
+    .pip-named     { background:var(--gold); }
+    .pip-legendary { background:#c97a2a; }
+    .pip-cursed    { background:#c05050; }
+    .cat-tag { font-family:var(--font-heading); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-muted); white-space:nowrap; }
+    .qty-cell { font-family:var(--font-heading); font-size:.88rem; color:var(--text-muted); text-align:center; }
+    .notes-cell { font-style:italic; font-size:.9rem; color:var(--text-muted); }
+    .no-results { text-align:center; padding:3rem; font-family:var(--font-body); font-style:italic; color:var(--text-muted); font-size:1rem; }
+    .legend { display:flex; flex-wrap:wrap; gap:1.25rem; margin-bottom:2rem; padding:1rem 1.25rem; background:var(--surface); border:1px solid var(--border); }
+    .legend-item { display:flex; align-items:center; gap:.5rem; font-family:var(--font-heading); font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; }
+    .legend-item.r-standard  { color:var(--text-muted); }
+    .legend-item.r-plus1     { color:#5a9e5a; }
+    .legend-item.r-plus2     { color:#6aabb8; }
+    .legend-item.r-plus4     { color:#9b6fd4; }
+    .legend-item.r-named     { color:var(--gold-light); }
+    .legend-item.r-legendary { color:#c97a2a; }
+    .legend-item.r-cursed    { color:#c05050; }
   </style>
 </head>
 <body>
@@ -62,27 +79,30 @@
     <header class="page-header">
       <p class="page-eyebrow">Guild Inventory · Freeport</p>
       <h1 class="page-title">The Vault</h1>
-      <p class="page-desc">A full record of everything the guild holds. Filter by category or search by name. The vault does not forget.</p>
+      <p class="page-desc">A full record of everything the guild holds. Filter by category and type, or search by name. The vault does not forget.</p>
     </header>
 
     <div class="page-content">
       <div class="legend">
-        <div class="legend-item"><span class="rarity-pip pip-standard"></span>Standard</div>
-        <div class="legend-item"><span class="rarity-pip pip-magical"></span>Magical</div>
-        <div class="legend-item"><span class="rarity-pip pip-named"></span>Named</div>
-        <div class="legend-item"><span class="rarity-pip pip-legendary"></span>Legendary</div>
-        <div class="legend-item"><span class="rarity-pip pip-cursed"></span>Cursed</div>
+        <div class="legend-item r-standard"><span class="rarity-pip pip-standard"></span>Standard</div>
+        <div class="legend-item r-plus1"><span class="rarity-pip pip-plus1"></span>+1</div>
+        <div class="legend-item r-plus2"><span class="rarity-pip pip-plus2"></span>+2 / +3</div>
+        <div class="legend-item r-plus4"><span class="rarity-pip pip-plus4"></span>+4 and above</div>
+        <div class="legend-item r-named"><span class="rarity-pip pip-named"></span>Named</div>
+        <div class="legend-item r-legendary"><span class="rarity-pip pip-legendary"></span>Legendary</div>
+        <div class="legend-item r-cursed"><span class="rarity-pip pip-cursed"></span>Cursed</div>
       </div>
 
       <div class="vault-controls">
-        <input type="text" class="vault-search" id="vaultSearch" placeholder="Search items..." oninput="filterVault()" />
-        <div class="filter-group" id="catFilters"></div>
+        <input type="text" class="vault-search" id="vaultSearch" placeholder="Search items..." oninput="renderTable()" />
       </div>
+      <div class="filter-row" id="catFilters"></div>
+      <div class="subfilter-row" id="subFilters"></div>
 
       <p class="vault-stats" id="vaultStats"></p>
 
       <div class="vault-table-wrap">
-        <table id="vaultTable">
+        <table>
           <thead>
             <tr>
               <th>Qty</th>
@@ -108,307 +128,336 @@
 
 <script>
 const VAULT = [
-  // ARMOR
-  {qty:1,name:"Studded Leather Armor",cat:"Armor",sub:"Light Armor",rarity:"standard",notes:""},
-  {qty:2,name:"Leather Armor +1",cat:"Armor",sub:"Light Armor",rarity:"magical",notes:"2 sets"},
-  {qty:2,name:"Leather Armor +1",cat:"Armor",sub:"Light Armor",rarity:"magical",notes:"2 additional sets"},
-  {qty:1,name:"Leather Armor +2",cat:"Armor",sub:"Light Armor",rarity:"magical",notes:""},
-  {qty:1,name:"Leather Armor +3",cat:"Armor",sub:"Light Armor",rarity:"magical",notes:""},
-  {qty:1,name:"Leather Armor +3",cat:"Armor",sub:"Light Armor",rarity:"magical",notes:"Second set"},
-  {qty:1,name:"Thieves Leather",cat:"Armor",sub:"Light Armor",rarity:"magical",notes:"Special thieves armor"},
-  {qty:1,name:"Ringmail +1",cat:"Armor",sub:"Medium Armor",rarity:"magical",notes:""},
-  {qty:2,name:"Scale Mail +1",cat:"Armor",sub:"Medium Armor",rarity:"magical",notes:"2 sets"},
-  {qty:1,name:"Scale Mail +1",cat:"Armor",sub:"Medium Armor",rarity:"magical",notes:"Third set"},
-  {qty:2,name:"Chain Mail +1",cat:"Armor",sub:"Medium Armor",rarity:"magical",notes:"2 sets"},
-  {qty:2,name:"Chain Mail +2",cat:"Armor",sub:"Medium Armor",rarity:"magical",notes:"2 sets"},
-  {qty:3,name:"Chain Mail +3",cat:"Armor",sub:"Medium Armor",rarity:"magical",notes:"3 sets"},
-  {qty:3,name:"Splint Mail +1",cat:"Armor",sub:"Medium Armor",rarity:"magical",notes:"3 sets"},
-  {qty:1,name:"Half Plate +3",cat:"Armor",sub:"Heavy Armor",rarity:"magical",notes:""},
-  {qty:2,name:"Plate Mail +1",cat:"Armor",sub:"Heavy Armor",rarity:"magical",notes:"2 sets"},
-  {qty:2,name:"Full Plate Mail +1",cat:"Armor",sub:"Heavy Armor",rarity:"magical",notes:"2 sets"},
-  {qty:1,name:"Full Plate Mail — Ogre Size",cat:"Armor",sub:"Heavy Armor",rarity:"standard",notes:"Ogre sized. Not wearable by humanoids."},
-  {qty:1,name:"Field Plate",cat:"Armor",sub:"Heavy Armor",rarity:"standard",notes:""},
-  {qty:1,name:"Silver Field Plate Mail +1",cat:"Armor",sub:"Heavy Armor",rarity:"magical",notes:"Silver construction"},
-  {qty:1,name:"Bronze Plate Mail +2",cat:"Armor",sub:"Heavy Armor",rarity:"magical",notes:"Bronze construction"},
-  {qty:1,name:"Elfin Chain Mail +1",cat:"Armor",sub:"Elven Armor",rarity:"magical",notes:""},
-  {qty:3,name:"Elfin Chain Mail +2",cat:"Armor",sub:"Elven Armor",rarity:"magical",notes:"3 sets"},
-  {qty:1,name:"Bracers of Defence AC8",cat:"Armor",sub:"Bracers",rarity:"magical",notes:""},
-  {qty:1,name:"Bracers of Defenselessness",cat:"Armor",sub:"Bracers",rarity:"cursed",notes:"CURSED — appears as Bracers of Defence"},
-  {qty:1,name:"Robe of Protection +2",cat:"Armor",sub:"Robes",rarity:"magical",notes:""},
-  {qty:1,name:"Robe of Vermin",cat:"Armor",sub:"Robes",rarity:"cursed",notes:"CURSED — summons vermin when worn"},
-  {qty:1,name:"Gauntlets of Fumbling",cat:"Armor",sub:"Gauntlets",rarity:"cursed",notes:"CURSED — causes fumbling in combat"},
-  {qty:1,name:"Cursed Shield of Missile Attracting",cat:"Armor",sub:"Shields",rarity:"cursed",notes:"CURSED — attracts all missile fire to the wielder"},
-  // SWORDS
-  {qty:4,name:"Longsword +1",cat:"Weapons",sub:"Swords",rarity:"magical",notes:"4 swords"},
-  {qty:1,name:"Longsword +1 / +3 vs Lycanthropes",cat:"Weapons",sub:"Swords",rarity:"magical",notes:"+3 vs lycanthropes and shapechangers"},
-  {qty:1,name:"Longsword +1 Flametongue",cat:"Weapons",sub:"Swords",rarity:"magical",notes:"Flaming blade"},
-  {qty:3,name:"Longsword +2",cat:"Weapons",sub:"Swords",rarity:"magical",notes:"3 swords"},
-  {qty:2,name:"Longsword +2 Dragonslayer",cat:"Weapons",sub:"Swords",rarity:"magical",notes:"Double damage vs dragons"},
-  {qty:1,name:"Langar",cat:"Weapons",sub:"Swords",rarity:"named",notes:"Longsword +2 / +4 vs Humanoids. Named blade."},
-  {qty:1,name:"Longsword +3 / +5 vs Shapechangers",cat:"Weapons",sub:"Swords",rarity:"magical",notes:"+5 vs shapechangers"},
-  {qty:1,name:"Longsword +1 / +2 vs Magic Users",cat:"Weapons",sub:"Swords",rarity:"magical",notes:"+2 vs magic-using creatures"},
-  {qty:1,name:"Shortsword +1",cat:"Weapons",sub:"Swords",rarity:"magical",notes:""},
-  {qty:1,name:"Shortsword +1 / +3 vs Shapeshifters",cat:"Weapons",sub:"Swords",rarity:"magical",notes:"+3 vs shapeshifters and werewolves"},
-  {qty:1,name:"Shortsword +1 / +3 vs Regenerating",cat:"Weapons",sub:"Swords",rarity:"magical",notes:"+3 vs regenerating creatures"},
-  {qty:1,name:"Shortsword +1 (Poison on Hit)",cat:"Weapons",sub:"Swords",rarity:"magical",notes:"Poisons target on hit"},
-  {qty:2,name:"Short Sword +3",cat:"Weapons",sub:"Swords",rarity:"magical",notes:"2 swords"},
-  {qty:1,name:"Ornate Short Sword +1",cat:"Weapons",sub:"Swords",rarity:"magical",notes:"Ornate decoration"},
-  {qty:1,name:"Bastard Sword of Dancing",cat:"Weapons",sub:"Swords",rarity:"legendary",notes:"Fights independently after being thrown"},
-  {qty:1,name:"Cursed Sword of Berserking",cat:"Weapons",sub:"Swords",rarity:"cursed",notes:"CURSED — causes uncontrolled berserking"},
-  {qty:1,name:"Broadsword +2 Giant Slayer",cat:"Weapons",sub:"Swords",rarity:"magical",notes:"Double damage vs giants"},
-  {qty:1,name:"Broadsword of the Planes",cat:"Weapons",sub:"Swords",rarity:"legendary",notes:"Functions across planar boundaries"},
-  {qty:1,name:"Scimitar +1 / +3 vs Regenerating",cat:"Weapons",sub:"Swords",rarity:"magical",notes:"+3 vs regenerating creatures"},
-  {qty:1,name:"Scimitar of Speed",cat:"Weapons",sub:"Swords",rarity:"magical",notes:"Extra attack per round"},
-  {qty:1,name:"Scimitar of Speed +3",cat:"Weapons",sub:"Swords",rarity:"magical",notes:"Extra attack per round"},
-  {qty:1,name:"Scimitar +3",cat:"Weapons",sub:"Swords",rarity:"magical",notes:""},
-  {qty:1,name:"Rapier +1 Trollbane",cat:"Weapons",sub:"Swords",rarity:"magical",notes:"Extra damage vs trolls"},
-  {qty:1,name:"Rapier +2",cat:"Weapons",sub:"Swords",rarity:"magical",notes:""},
-  {qty:1,name:"Holy Avenger +6",cat:"Weapons",sub:"Swords",rarity:"legendary",notes:"Paladin only. Dispels magic on hit. The finest blade in the vault."},
-  // TWO-HANDED SWORDS
-  {qty:1,name:"2H Sword +1",cat:"Weapons",sub:"Two-Handed Swords",rarity:"magical",notes:""},
-  {qty:1,name:"2H Sword +2",cat:"Weapons",sub:"Two-Handed Swords",rarity:"magical",notes:""},
-  {qty:1,name:"2H Sword +2 Giant Slayer",cat:"Weapons",sub:"Two-Handed Swords",rarity:"magical",notes:"Double damage vs giants"},
-  {qty:1,name:"2H Sword +3 / +6 Frostbrand",cat:"Weapons",sub:"Two-Handed Swords",rarity:"legendary",notes:"Cold damage, extinguishes fire, fire resistance"},
-  {qty:2,name:"2H Sword +4",cat:"Weapons",sub:"Two-Handed Swords",rarity:"magical",notes:"2 swords"},
-  {qty:1,name:"2H Sword +4 — Ogre Size",cat:"Weapons",sub:"Two-Handed Swords",rarity:"magical",notes:"Ogre sized"},
-  {qty:1,name:"Bar-Ethel, The True Death",cat:"Weapons",sub:"Two-Handed Swords",rarity:"named",notes:"Named blade. +1 / +2 vs Undead."},
-  // AXES
-  {qty:2,name:"Battle Axe +1",cat:"Weapons",sub:"Axes",rarity:"magical",notes:"2 axes"},
-  {qty:1,name:"Battle Axe +2",cat:"Weapons",sub:"Axes",rarity:"magical",notes:""},
-  {qty:3,name:"Battle Axe +3",cat:"Weapons",sub:"Axes",rarity:"magical",notes:"3 axes"},
-  {qty:1,name:"Great Axe +4",cat:"Weapons",sub:"Axes",rarity:"magical",notes:""},
-  {qty:1,name:"Bardiche +2",cat:"Weapons",sub:"Axes",rarity:"magical",notes:""},
-  {qty:1,name:"Dwarven Thrower +3",cat:"Weapons",sub:"Axes",rarity:"magical",notes:"Returns when thrown. Bonus damage for dwarves."},
-  // HAMMERS
-  {qty:2,name:"Warhammer +1",cat:"Weapons",sub:"Hammers",rarity:"magical",notes:"2 hammers"},
-  {qty:1,name:"Warhammer +3 / +5 vs Undead",cat:"Weapons",sub:"Hammers",rarity:"magical",notes:"+5 vs undead"},
-  {qty:1,name:"Hammer +4",cat:"Weapons",sub:"Hammers",rarity:"magical",notes:""},
-  {qty:1,name:"Hammer of Thunderbolts",cat:"Weapons",sub:"Hammers",rarity:"legendary",notes:"Giant bane. Doubles STR with matching belt and gauntlets."},
-  {qty:1,name:"Mallet +1",cat:"Weapons",sub:"Hammers",rarity:"magical",notes:""},
-  {qty:1,name:"Maul of the Titans",cat:"Weapons",sub:"Hammers",rarity:"legendary",notes:"Massive damage. Requires 18 STR to wield."},
-  // MACES
-  {qty:1,name:"Mace +2",cat:"Weapons",sub:"Maces",rarity:"magical",notes:""},
-  {qty:3,name:"Mace +3",cat:"Weapons",sub:"Maces",rarity:"magical",notes:"3 maces"},
-  {qty:1,name:"Mace +3 / +6 vs Undead",cat:"Weapons",sub:"Maces",rarity:"magical",notes:"+6 vs undead"},
-  {qty:1,name:"Morning Star +2",cat:"Weapons",sub:"Maces",rarity:"magical",notes:""},
-  // DAGGERS
-  {qty:3,name:"Dagger +1",cat:"Weapons",sub:"Daggers",rarity:"magical",notes:"3 daggers"},
-  {qty:2,name:"Dagger +1 / +2 vs Small Creatures",cat:"Weapons",sub:"Daggers",rarity:"magical",notes:"+2 vs creatures smaller than man-size"},
-  {qty:2,name:"Dagger +2",cat:"Weapons",sub:"Daggers",rarity:"magical",notes:"2 daggers"},
-  {qty:1,name:"Dagger +2 / +3 vs Large Creatures",cat:"Weapons",sub:"Daggers",rarity:"magical",notes:"+3 vs creatures larger than man-size"},
-  {qty:1,name:"Knife +1",cat:"Weapons",sub:"Daggers",rarity:"magical",notes:""},
-  {qty:1,name:"Knife +2",cat:"Weapons",sub:"Daggers",rarity:"magical",notes:""},
-  // STAVES
-  {qty:1,name:"Staff of the Magi",cat:"Weapons",sub:"Staves",rarity:"legendary",notes:"One of the most powerful magical staves in existence"},
-  {qty:1,name:"Staff of Curing",cat:"Weapons",sub:"Staves",rarity:"magical",notes:""},
-  {qty:1,name:"Staff of Striking",cat:"Weapons",sub:"Staves",rarity:"magical",notes:""},
-  {qty:1,name:"Staff Mace",cat:"Weapons",sub:"Staves",rarity:"magical",notes:"Functions as both staff and mace"},
-  // POLEARMS / SPEARS
-  {qty:1,name:"Halberd +2",cat:"Weapons",sub:"Polearms",rarity:"magical",notes:""},
-  {qty:1,name:"Spear +2",cat:"Weapons",sub:"Spears",rarity:"magical",notes:""},
-  {qty:1,name:"Spear +4",cat:"Weapons",sub:"Spears",rarity:"magical",notes:""},
-  {qty:1,name:"Spear — Cursed Backbiter",cat:"Weapons",sub:"Spears",rarity:"cursed",notes:"CURSED — strikes the wielder on every attack"},
-  {qty:1,name:"Javelin +2",cat:"Weapons",sub:"Spears",rarity:"magical",notes:""},
-  // RANGED
-  {qty:2,name:"Short Bow +1",cat:"Weapons",sub:"Ranged",rarity:"magical",notes:"2 bows"},
-  {qty:4,name:"Darts +3",cat:"Weapons",sub:"Ranged",rarity:"magical",notes:"4 darts"},
-  {qty:300,name:"Silver Crossbow Bolts",cat:"Weapons",sub:"Ranged",rarity:"standard",notes:"Silver-tipped. Effective vs lycanthropes and certain undead."},
-  // RINGS
-  {qty:1,name:"Ring of Protection +1",cat:"Rings",sub:"Protection",rarity:"magical",notes:""},
-  {qty:1,name:"Ring of Protection +2",cat:"Rings",sub:"Protection",rarity:"magical",notes:""},
-  {qty:1,name:"Ring of Regeneration",cat:"Rings",sub:"Healing",rarity:"legendary",notes:"Slowly regenerates hit points"},
-  {qty:1,name:"Ring of Waterwalking",cat:"Rings",sub:"Movement",rarity:"magical",notes:"Walk on water as solid ground"},
-  {qty:1,name:"Ring of Shocking Grasp",cat:"Rings",sub:"Offensive",rarity:"magical",notes:"Delivers electric shock on touch"},
-  {qty:1,name:"Ring of Truth",cat:"Rings",sub:"Detection",rarity:"magical",notes:"Detects lies"},
-  {qty:1,name:"Ring of Animal Friendship",cat:"Rings",sub:"Utility",rarity:"magical",notes:"Charms animals"},
-  // WONDROUS ITEMS
-  {qty:1,name:"Cloak of Arachnida",cat:"Wondrous Items",sub:"Cloaks",rarity:"magical",notes:"Spider climb, web immunity, limited web ability"},
-  {qty:1,name:"Brooch of Shielding",cat:"Wondrous Items",sub:"Worn",rarity:"magical",notes:"Absorbs magic missile damage"},
-  {qty:1,name:"Helm of Comprehension",cat:"Wondrous Items",sub:"Helms",rarity:"magical",notes:"Comprehend languages"},
-  {qty:1,name:"Belt of Many Pouches",cat:"Wondrous Items",sub:"Belts",rarity:"magical",notes:"Each pouch holds more than it appears"},
-  {qty:1,name:"Bracers of Brachiation",cat:"Wondrous Items",sub:"Bracers",rarity:"magical",notes:"Swing through trees and terrain like an ape"},
-  {qty:1,name:"Eyes of Minute Seeing",cat:"Wondrous Items",sub:"Eyes",rarity:"magical",notes:"See tiny details, read small text at distance"},
-  {qty:1,name:"Eyes of Charming",cat:"Wondrous Items",sub:"Eyes",rarity:"magical",notes:"Charm person by gaze"},
-  {qty:1,name:"Eyes of the Eagle",cat:"Wondrous Items",sub:"Eyes",rarity:"magical",notes:"Exceptional long-distance vision"},
-  {qty:1,name:"Periapt of Wound Closure",cat:"Wondrous Items",sub:"Amulets",rarity:"magical",notes:"Stabilizes dying characters automatically"},
-  {qty:1,name:"Amulet of the Planes",cat:"Wondrous Items",sub:"Amulets",rarity:"legendary",notes:"Planar travel — dangerous without knowledge of planes"},
-  {qty:1,name:"Talisman of Pure Good",cat:"Wondrous Items",sub:"Talismans",rarity:"legendary",notes:"Evil clerics touching this take damage. Good clerics only."},
-  {qty:1,name:"Talisman of Zagy",cat:"Wondrous Items",sub:"Talismans",rarity:"legendary",notes:"Unpredictable effects based on alignment and luck"},
-  {qty:1,name:"Scarab of Protection",cat:"Wondrous Items",sub:"Scarabs",rarity:"magical",notes:"Absorbs death spells and energy drains"},
-  {qty:1,name:"Scarab of Insanity",cat:"Wondrous Items",sub:"Scarabs",rarity:"cursed",notes:"CURSED — causes insanity when used"},
-  {qty:1,name:"Philosopher's Stone",cat:"Wondrous Items",sub:"Misc",rarity:"legendary",notes:"Transmutes base metals to silver or gold"},
-  {qty:1,name:"Crystal Ball",cat:"Wondrous Items",sub:"Misc",rarity:"legendary",notes:"Scrying device"},
-  {qty:1,name:"Cubic Gate",cat:"Wondrous Items",sub:"Misc",rarity:"legendary",notes:"Six-sided cube. Each face linked to a different plane."},
-  {qty:1,name:"Pearl of Power",cat:"Wondrous Items",sub:"Misc",rarity:"magical",notes:"Recover one expended spell slot"},
-  {qty:1,name:"Phylactery of Long Years",cat:"Wondrous Items",sub:"Misc",rarity:"legendary",notes:"Slows aging significantly"},
-  {qty:1,name:"Incense of Meditation",cat:"Wondrous Items",sub:"Misc",rarity:"magical",notes:"Doubles spell effect for clerics"},
-  {qty:1,name:"Oil of Impact",cat:"Wondrous Items",sub:"Misc",rarity:"magical",notes:"Adds impact damage to weapons or projectiles"},
-  {qty:2,name:"Dust of Dryness",cat:"Wondrous Items",sub:"Misc",rarity:"magical",notes:"Absorbs large quantities of water into marble-sized pellet"},
-  {qty:1,name:"Bag of Tricks (Type B)",cat:"Wondrous Items",sub:"Misc",rarity:"magical",notes:"Produces small animals that fight for the user"},
-  {qty:1,name:"Robe of Useful Items",cat:"Wondrous Items",sub:"Robes",rarity:"magical",notes:"Patches on robe become useful items when removed"},
-  {qty:1,name:"Censer of Controlling Air Elementals",cat:"Wondrous Items",sub:"Misc",rarity:"magical",notes:"Summon and control air elementals"},
-  {qty:1,name:"Chime of Opening",cat:"Wondrous Items",sub:"Misc",rarity:"magical",notes:"Opens locks, doors, portals. Limited charges."},
-  {qty:1,name:"Net of Snaring",cat:"Wondrous Items",sub:"Misc",rarity:"magical",notes:"Entangles creatures"},
-  {qty:1,name:"Net of Entrapment",cat:"Wondrous Items",sub:"Misc",rarity:"magical",notes:"Stronger entanglement net"},
-  // RODS & WANDS
-  {qty:1,name:"Rod of Absorption",cat:"Rods & Wands",sub:"Rods",rarity:"legendary",notes:"Absorbs spells cast at wielder, converts to spell slots"},
-  {qty:1,name:"Rod of Cancellation",cat:"Rods & Wands",sub:"Rods",rarity:"legendary",notes:"Drains all magical properties from target item on touch"},
-  {qty:1,name:"Rod of Beguiling",cat:"Rods & Wands",sub:"Rods",rarity:"magical",notes:"Charms all within range"},
-  {qty:1,name:"Rod of Flailing",cat:"Rods & Wands",sub:"Rods",rarity:"magical",notes:"Attacks multiple targets"},
-  {qty:1,name:"Rod of Splendor",cat:"Rods & Wands",sub:"Rods",rarity:"magical",notes:"Creates magnificent clothing and a feast"},
-  {qty:1,name:"Wand of Wonder",cat:"Rods & Wands",sub:"Wands",rarity:"magical",notes:"Random effects. Wildly unpredictable."},
-  {qty:1,name:"Wand of Metal Command",cat:"Rods & Wands",sub:"Wands",rarity:"magical",notes:"Commands and shapes metal"},
-  {qty:1,name:"Wand of Defoliation",cat:"Rods & Wands",sub:"Wands",rarity:"magical",notes:"Destroys plant life in area"},
-  {qty:1,name:"Wand of Paralyzation",cat:"Rods & Wands",sub:"Wands",rarity:"magical",notes:"Paralyzes targets in cone"},
-  {qty:1,name:"Staff of Slinging",cat:"Rods & Wands",sub:"Staves",rarity:"magical",notes:"Hurls stones at great force"},
-  {qty:1,name:"Horn of Valhalla (Iron)",cat:"Rods & Wands",sub:"Misc",rarity:"legendary",notes:"Summons berserker warriors. Requires 7th level fighter."},
-  // GEMS
-  {qty:1,name:"Aquamarine",cat:"Gems",sub:"Precious Stones",rarity:"standard",notes:"500 gp"},
-  {qty:1,name:"Blue Sapphire",cat:"Gems",sub:"Precious Stones",rarity:"standard",notes:"8,000 gp"},
-  {qty:1,name:"Black Sapphire",cat:"Gems",sub:"Precious Stones",rarity:"standard",notes:"Value unknown"},
-  {qty:2,name:"Star Ruby",cat:"Gems",sub:"Precious Stones",rarity:"standard",notes:"1,000 gp each"},
-  {qty:1,name:"Yellow Topaz",cat:"Gems",sub:"Precious Stones",rarity:"standard",notes:"600 gp"},
-  {qty:1,name:"Diamond",cat:"Gems",sub:"Precious Stones",rarity:"standard",notes:""},
-  {qty:2,name:"Opal",cat:"Gems",sub:"Precious Stones",rarity:"standard",notes:""},
-  {qty:2,name:"Oriental Emerald",cat:"Gems",sub:"Precious Stones",rarity:"standard",notes:""},
-  {qty:1,name:"Oriental Topaz",cat:"Gems",sub:"Precious Stones",rarity:"standard",notes:""},
-  {qty:2,name:"Oriental Amethyst",cat:"Gems",sub:"Precious Stones",rarity:"standard",notes:""},
-  {qty:1,name:"Ruby",cat:"Gems",sub:"Precious Stones",rarity:"standard",notes:""},
-  {qty:1,name:"Fire Opal",cat:"Gems",sub:"Precious Stones",rarity:"standard",notes:""},
-  {qty:10,name:"Black Pearl",cat:"Gems",sub:"Precious Stones",rarity:"standard",notes:""},
-  {qty:30,name:"Moonstone",cat:"Gems",sub:"Semi-Precious",rarity:"standard",notes:"100 gp each"},
-  {qty:1,name:"Rhodochrosite",cat:"Gems",sub:"Semi-Precious",rarity:"standard",notes:"10 gp"},
-  {qty:1,name:"Lapis Lazuli",cat:"Gems",sub:"Semi-Precious",rarity:"standard",notes:"10 gp"},
-  {qty:10,name:"Turquoise",cat:"Gems",sub:"Semi-Precious",rarity:"standard",notes:"10 gp each"},
-  {qty:10,name:"Black Obsidian",cat:"Gems",sub:"Semi-Precious",rarity:"standard",notes:""},
-  {qty:10,name:"Blue Quartz",cat:"Gems",sub:"Semi-Precious",rarity:"standard",notes:""},
-  {qty:10,name:"Citrine",cat:"Gems",sub:"Semi-Precious",rarity:"standard",notes:""},
-  {qty:10,name:"Chalcedony",cat:"Gems",sub:"Semi-Precious",rarity:"standard",notes:""},
-  {qty:10,name:"Violet Garnet",cat:"Gems",sub:"Semi-Precious",rarity:"standard",notes:""},
-  {qty:10,name:"Black Jet",cat:"Gems",sub:"Semi-Precious",rarity:"standard",notes:""},
-  {qty:10,name:"Crimson Coral",cat:"Gems",sub:"Semi-Precious",rarity:"standard",notes:""},
-  {qty:10,name:"Peridot",cat:"Gems",sub:"Semi-Precious",rarity:"standard",notes:""},
-  // VALUABLES
-  {qty:1,name:"Wine",cat:"Valuables",sub:"Trade Goods",rarity:"standard",notes:"1,100 gp"},
-  {qty:1,name:"Porcelain Amphora",cat:"Valuables",sub:"Trade Goods",rarity:"standard",notes:"1,500 gp"},
-  {qty:1,name:"Black Dragon Scale Boots",cat:"Valuables",sub:"Trade Goods",rarity:"standard",notes:"400 gp"},
-  {qty:1,name:"Gold Slag Pile",cat:"Valuables",sub:"Trade Goods",rarity:"standard",notes:"6,000 gp"},
-  {qty:4,name:"Gold Statuettes",cat:"Valuables",sub:"Art Objects",rarity:"standard",notes:""},
-  {qty:1,name:"Box — Silver with Gems",cat:"Valuables",sub:"Art Objects",rarity:"standard",notes:""},
-  {qty:1,name:"Goblet — Silver and Gold",cat:"Valuables",sub:"Art Objects",rarity:"standard",notes:""},
-  {qty:1,name:"Statuette — Gold with Gems",cat:"Valuables",sub:"Art Objects",rarity:"standard",notes:""},
-  {qty:1,name:"Orb — Silver with Gems",cat:"Valuables",sub:"Art Objects",rarity:"standard",notes:""},
-  {qty:1,name:"Goblet — Gold with Gems",cat:"Valuables",sub:"Art Objects",rarity:"standard",notes:""},
-  {qty:1,name:"Gold Buckle with Peridot",cat:"Valuables",sub:"Jewelry",rarity:"standard",notes:""},
-  {qty:1,name:"Earring — Silver with Gems",cat:"Valuables",sub:"Jewelry",rarity:"standard",notes:""},
-  {qty:1,name:"Diadem — Platinum with Gems",cat:"Valuables",sub:"Jewelry",rarity:"standard",notes:""},
-  {qty:1,name:"Fob — Gold",cat:"Valuables",sub:"Jewelry",rarity:"standard",notes:""},
-  {qty:1,name:"Choker — Gold with Gems",cat:"Valuables",sub:"Jewelry",rarity:"standard",notes:""},
-  {qty:1,name:"Clasp — Jade",cat:"Valuables",sub:"Jewelry",rarity:"standard",notes:""},
-  {qty:1,name:"Ring — Gold",cat:"Valuables",sub:"Jewelry",rarity:"standard",notes:"Non-magical"},
-  {qty:1,name:"Necklace — Gold",cat:"Valuables",sub:"Jewelry",rarity:"standard",notes:""},
-  {qty:1,name:"Collar — Silver and Gold",cat:"Valuables",sub:"Jewelry",rarity:"standard",notes:""},
-  {qty:1,name:"Locket — Platinum with Gems",cat:"Valuables",sub:"Jewelry",rarity:"standard",notes:""},
-  {qty:1,name:"Pin — Ivory",cat:"Valuables",sub:"Jewelry",rarity:"standard",notes:""},
-  {qty:2,name:"Arm Band — Silver with Gems",cat:"Valuables",sub:"Jewelry",rarity:"standard",notes:""},
-  {qty:1,name:"Pin — Platinum",cat:"Valuables",sub:"Jewelry",rarity:"standard",notes:""},
-  {qty:1,name:"Brooch — Gold with Gems",cat:"Valuables",sub:"Jewelry",rarity:"standard",notes:""},
-  // POTIONS & OILS
-  {qty:110,name:"Potion of Healing",cat:"Potions",sub:"Healing",rarity:"standard",notes:""},
-  {qty:1,name:"Elixir of Health",cat:"Potions",sub:"Healing",rarity:"magical",notes:"Cures all diseases, blindness, deafness, and similar afflictions"},
-  {qty:2,name:"Potion of Vitality",cat:"Potions",sub:"Healing",rarity:"magical",notes:"Restores fatigue and minor conditions"},
-  {qty:1,name:"Super Heroism Potion",cat:"Potions",sub:"Combat",rarity:"magical",notes:"Temporarily raises fighter level and grants bonus HP"},
-  {qty:1,name:"Potion of Bull Strength",cat:"Potions",sub:"Combat",rarity:"magical",notes:"Raises STR to exceptional levels"},
-  {qty:1,name:"Potion of Stone Giant Strength",cat:"Potions",sub:"Combat",rarity:"magical",notes:"STR equivalent to a stone giant"},
-  {qty:1,name:"Potion of Speed",cat:"Potions",sub:"Combat",rarity:"magical",notes:"Doubles movement and attacks"},
-  {qty:1,name:"Potion of Fire Breath",cat:"Potions",sub:"Combat",rarity:"magical",notes:"Allows user to breathe fire"},
-  {qty:1,name:"Potion of Eagle Splendor",cat:"Potions",sub:"Ability",rarity:"magical",notes:"Raises CHA temporarily"},
-  {qty:1,name:"Potion of Endure Elements",cat:"Potions",sub:"Ability",rarity:"magical",notes:"Protects against environmental extremes"},
-  {qty:1,name:"Potion of Levitation",cat:"Potions",sub:"Movement",rarity:"magical",notes:"Levitate vertically at will"},
-  {qty:1,name:"Potion of Longevity",cat:"Potions",sub:"Ability",rarity:"magical",notes:"Reduces caster age — small chance of reversing all longevity potions ever consumed"},
-  {qty:1,name:"Potion of Polymorph",cat:"Potions",sub:"Ability",rarity:"magical",notes:"Polymorph self into another creature"},
-  {qty:1,name:"Potion of Ventriloquism",cat:"Potions",sub:"Ability",rarity:"magical",notes:"Throw voice at will for duration"},
-  {qty:1,name:"Potion of Plant Control",cat:"Potions",sub:"Control",rarity:"magical",notes:"Command and direct plant creatures and vegetation"},
-  {qty:2,name:"Potion of Human Control",cat:"Potions",sub:"Control",rarity:"magical",notes:"Charm and direct humans"},
-  {qty:1,name:"Potion of ESP",cat:"Potions",sub:"Detection",rarity:"magical",notes:"Read surface thoughts of nearby creatures"},
-  {qty:2,name:"Potion of Clairaudience",cat:"Potions",sub:"Detection",rarity:"magical",notes:"Hear at a distance"},
-  {qty:2,name:"Potion of Waterbreathing",cat:"Potions",sub:"Movement",rarity:"magical",notes:"Breathe underwater"},
-  {qty:1,name:"Potion of Sweet Water",cat:"Potions",sub:"Utility",rarity:"magical",notes:"Purifies and sweetens large quantities of water"},
-  {qty:2,name:"Philter of Glibness",cat:"Potions",sub:"Utility",rarity:"magical",notes:"Speak convincingly and smoothly — bonuses to deception and persuasion"},
-  {qty:1,name:"Philter of Beauty",cat:"Potions",sub:"Utility",rarity:"magical",notes:"Raises CHA to maximum and makes drinker appear beautiful"},
-  {qty:3,name:"Potion of Climbing",cat:"Potions",sub:"Movement",rarity:"magical",notes:"Climb any surface at full movement rate"},
-  {qty:2,name:"Oil of Acid Resistance",cat:"Potions",sub:"Protection",rarity:"magical",notes:"Grants resistance to acid damage"},
-  {qty:1,name:"Oil of Etherealness",cat:"Potions",sub:"Movement",rarity:"magical",notes:"Enter the ethereal plane — pass through solid matter"},
-  {qty:1,name:"Oil of Disenchantment",cat:"Potions",sub:"Utility",rarity:"magical",notes:"Removes enchantments from items or creatures"},
-  // SCROLLS
-  {qty:2,name:"Scroll of Protection from Fire",cat:"Scrolls",sub:"Protection",rarity:"magical",notes:""},
-  {qty:1,name:"Scroll of Protection from Weapons",cat:"Scrolls",sub:"Protection",rarity:"magical",notes:""},
-  {qty:1,name:"Scroll of Protection from Gas",cat:"Scrolls",sub:"Protection",rarity:"magical",notes:""},
-  {qty:2,name:"Scroll of Protection from Breath Weapon (Non-Dragon)",cat:"Scrolls",sub:"Protection",rarity:"magical",notes:""},
-  {qty:1,name:"Scroll of Protection from Petrification",cat:"Scrolls",sub:"Protection",rarity:"magical",notes:""},
-  {qty:1,name:"Scroll of Protection from Lycanthropes",cat:"Scrolls",sub:"Protection",rarity:"magical",notes:""},
-  {qty:2,name:"Scroll of Protection from Poison",cat:"Scrolls",sub:"Protection",rarity:"magical",notes:""},
-  {qty:1,name:"Scroll of Protection from Possession",cat:"Scrolls",sub:"Protection",rarity:"magical",notes:""},
-  {qty:1,name:"Scroll of Protection from Magic Weapons",cat:"Scrolls",sub:"Protection",rarity:"magical",notes:""},
-  {qty:1,name:"Scroll of Protection from Electricity",cat:"Scrolls",sub:"Protection",rarity:"magical",notes:""},
-  {qty:2,name:"Scroll of Protection from Magic",cat:"Scrolls",sub:"Protection",rarity:"magical",notes:""},
-  {qty:2,name:"Scroll of Protection from Magical Blunt Weapons",cat:"Scrolls",sub:"Protection",rarity:"magical",notes:""},
-  {qty:1,name:"Scroll of Protection from Cold",cat:"Scrolls",sub:"Protection",rarity:"magical",notes:""},
-  {qty:1,name:"Scroll of Protection from Evil",cat:"Scrolls",sub:"Protection",rarity:"magical",notes:""},
-  {qty:4,name:"Scroll of Protection from Undead",cat:"Scrolls",sub:"Protection",rarity:"magical",notes:"4 scrolls"},
-  {qty:4,name:"Scroll of Protection from Elementals",cat:"Scrolls",sub:"Protection",rarity:"magical",notes:""},
-  {qty:1,name:"Scroll of Protection from Plants",cat:"Scrolls",sub:"Protection",rarity:"magical",notes:""},
-  {qty:1,name:"Scroll of Protection from Cantrips (Lvl 2)",cat:"Scrolls",sub:"Protection",rarity:"magical",notes:"Level 2 scroll"},
-  {qty:1,name:"Scroll of Protection from Devils",cat:"Scrolls",sub:"Protection",rarity:"magical",notes:""},
-  {qty:1,name:"Cursed Scroll",cat:"Scrolls",sub:"Cursed",rarity:"cursed",notes:"CURSED — contents and effect unknown. Do not read aloud."},
-  // ADDITIONS
-  {qty:1,name:"Dust of Disappearance",cat:"Wondrous Items",sub:"Misc",rarity:"magical",notes:"Sprinkle on a creature or object to render it invisible"},
-  {qty:1,name:"Polearm +1",cat:"Weapons",sub:"Polearms",rarity:"magical",notes:""},
-  {qty:1,name:"Warhammer +2",cat:"Weapons",sub:"Hammers",rarity:"magical",notes:"Shiny — notably well-crafted"},
-  {qty:1,name:"Battle Axe +2",cat:"Weapons",sub:"Axes",rarity:"magical",notes:""},
-  {qty:8,name:"Darts +1",cat:"Weapons",sub:"Ranged",rarity:"magical",notes:"8 darts"},
-  {qty:1,name:"Horn of Blasting",cat:"Wondrous Items",sub:"Misc",rarity:"magical",notes:"Sonic cone attack — damages and stuns. Prolonged use can shatter the horn."},
+  // ── ARMOR: LIGHT ──
+  {qty:1, name:"Studded Leather Armor",              cat:"Armor", sub:"Light Armor",        rarity:"standard", notes:""},
+  {qty:4, name:"Leather Armor +1",                   cat:"Armor", sub:"Light Armor",        rarity:"plus1",    notes:"4 sets"},
+  {qty:1, name:"Leather Armor +2",                   cat:"Armor", sub:"Light Armor",        rarity:"plus2",    notes:""},
+  {qty:2, name:"Leather Armor +3",                   cat:"Armor", sub:"Light Armor",        rarity:"plus2",    notes:"2 sets"},
+  {qty:1, name:"Thieves Leather",                    cat:"Armor", sub:"Light Armor",        rarity:"plus1",    notes:"Special thieves armor"},
+  {qty:1, name:"Ringmail +1",                        cat:"Armor", sub:"Medium Armor",       rarity:"plus1",    notes:""},
+  {qty:3, name:"Scale Mail +1",                      cat:"Armor", sub:"Medium Armor",       rarity:"plus1",    notes:"3 sets"},
+  {qty:2, name:"Chain Mail +1",                      cat:"Armor", sub:"Medium Armor",       rarity:"plus1",    notes:"2 sets"},
+  {qty:2, name:"Chain Mail +2",                      cat:"Armor", sub:"Medium Armor",       rarity:"plus2",    notes:"2 sets"},
+  {qty:3, name:"Chain Mail +3",                      cat:"Armor", sub:"Medium Armor",       rarity:"plus2",    notes:"3 sets"},
+  {qty:3, name:"Splint Mail +1",                     cat:"Armor", sub:"Medium Armor",       rarity:"plus1",    notes:"3 sets"},
+  {qty:1, name:"Half Plate +3",                      cat:"Armor", sub:"Heavy Armor",        rarity:"plus2",    notes:""},
+  {qty:2, name:"Plate Mail +1",                      cat:"Armor", sub:"Heavy Armor",        rarity:"plus1",    notes:"2 sets"},
+  {qty:2, name:"Full Plate Mail +1",                 cat:"Armor", sub:"Heavy Armor",        rarity:"plus1",    notes:"2 sets"},
+  {qty:1, name:"Full Plate Mail — Ogre Size",        cat:"Armor", sub:"Heavy Armor",        rarity:"standard", notes:"Ogre sized — not wearable by humanoids"},
+  {qty:1, name:"Field Plate",                        cat:"Armor", sub:"Heavy Armor",        rarity:"standard", notes:""},
+  {qty:1, name:"Silver Field Plate Mail +1",         cat:"Armor", sub:"Heavy Armor",        rarity:"plus1",    notes:"Silver construction"},
+  {qty:1, name:"Bronze Plate Mail +2",               cat:"Armor", sub:"Heavy Armor",        rarity:"plus2",    notes:"Bronze construction"},
+  {qty:1, name:"Elfin Chain Mail +1",                cat:"Armor", sub:"Elven Armor",        rarity:"plus1",    notes:""},
+  {qty:3, name:"Elfin Chain Mail +2",                cat:"Armor", sub:"Elven Armor",        rarity:"plus2",    notes:"3 sets"},
+  {qty:1, name:"Bracers of Defence AC8",             cat:"Armor", sub:"Bracers",            rarity:"plus1",    notes:""},
+  {qty:1, name:"Bracers of Defenselessness",         cat:"Armor", sub:"Bracers",            rarity:"cursed",   notes:"CURSED — appears as Bracers of Defence"},
+  {qty:1, name:"Robe of Protection +2",              cat:"Armor", sub:"Robes",              rarity:"plus2",    notes:""},
+  {qty:1, name:"Robe of Vermin",                     cat:"Armor", sub:"Robes",              rarity:"cursed",   notes:"CURSED — summons vermin when worn"},
+  {qty:1, name:"Gauntlets of Fumbling",              cat:"Armor", sub:"Gauntlets",          rarity:"cursed",   notes:"CURSED — causes fumbling in combat"},
+  {qty:1, name:"Cursed Shield of Missile Attracting",cat:"Armor", sub:"Shields",            rarity:"cursed",   notes:"CURSED — attracts all missile fire to wielder"},
+  // ── WEAPONS: SWORDS ──
+  {qty:4, name:"Longsword +1",                       cat:"Weapons", sub:"Swords",           rarity:"plus1",    notes:"4 swords"},
+  {qty:1, name:"Longsword +1 / +3 vs Lycanthropes",  cat:"Weapons", sub:"Swords",           rarity:"plus1",    notes:"+3 vs lycanthropes and shapechangers"},
+  {qty:1, name:"Longsword +1 Flametongue",           cat:"Weapons", sub:"Swords",           rarity:"plus1",    notes:"Flaming blade"},
+  {qty:3, name:"Longsword +2",                       cat:"Weapons", sub:"Swords",           rarity:"plus2",    notes:"3 swords"},
+  {qty:2, name:"Longsword +2 Dragonslayer",          cat:"Weapons", sub:"Swords",           rarity:"plus2",    notes:"Double damage vs dragons"},
+  {qty:1, name:"Longsword +3 / +5 vs Shapechangers", cat:"Weapons", sub:"Swords",           rarity:"plus2",    notes:"+5 vs shapechangers"},
+  {qty:1, name:"Longsword +1 / +2 vs Magic Users",   cat:"Weapons", sub:"Swords",           rarity:"plus1",    notes:"+2 vs magic-using creatures"},
+  {qty:1, name:"Langar",                             cat:"Weapons", sub:"Swords",           rarity:"named",    notes:"Longsword +2 / +4 vs Humanoids"},
+  {qty:1, name:"Shortsword +1",                      cat:"Weapons", sub:"Swords",           rarity:"plus1",    notes:""},
+  {qty:1, name:"Shortsword +1 / +3 vs Shapeshifters",cat:"Weapons", sub:"Swords",           rarity:"plus1",    notes:"+3 vs shapeshifters and werewolves"},
+  {qty:1, name:"Shortsword +1 / +3 vs Regenerating", cat:"Weapons", sub:"Swords",           rarity:"plus1",    notes:"+3 vs regenerating creatures"},
+  {qty:1, name:"Shortsword +1 (Poison on Hit)",      cat:"Weapons", sub:"Swords",           rarity:"plus1",    notes:"Poisons target on hit"},
+  {qty:2, name:"Short Sword +3",                     cat:"Weapons", sub:"Swords",           rarity:"plus2",    notes:"2 swords"},
+  {qty:1, name:"Ornate Short Sword +1",              cat:"Weapons", sub:"Swords",           rarity:"plus1",    notes:"Ornate decoration"},
+  {qty:1, name:"Rapier +1 Trollbane",                cat:"Weapons", sub:"Swords",           rarity:"plus1",    notes:"Extra damage vs trolls"},
+  {qty:1, name:"Rapier +2",                          cat:"Weapons", sub:"Swords",           rarity:"plus2",    notes:""},
+  {qty:1, name:"Rapier +2",                          cat:"Weapons", sub:"Swords",           rarity:"plus2",    notes:"Second rapier"},
+  {qty:1, name:"Scimitar +1 / +3 vs Regenerating",   cat:"Weapons", sub:"Swords",           rarity:"plus1",    notes:"+3 vs regenerating creatures"},
+  {qty:1, name:"Scimitar of Speed",                  cat:"Weapons", sub:"Swords",           rarity:"plus1",    notes:"Extra attack per round"},
+  {qty:1, name:"Scimitar of Speed +3",               cat:"Weapons", sub:"Swords",           rarity:"plus2",    notes:"Extra attack per round"},
+  {qty:1, name:"Scimitar +3",                        cat:"Weapons", sub:"Swords",           rarity:"plus2",    notes:""},
+  {qty:1, name:"Broadsword +2 Giant Slayer",         cat:"Weapons", sub:"Swords",           rarity:"plus2",    notes:"Double damage vs giants"},
+  {qty:1, name:"Bastard Sword +3",                   cat:"Weapons", sub:"Swords",           rarity:"plus2",    notes:""},
+  {qty:1, name:"Bastard Sword of Dancing",           cat:"Weapons", sub:"Swords",           rarity:"legendary",notes:"Fights independently after being thrown"},
+  {qty:1, name:"Cursed Sword of Berserking",         cat:"Weapons", sub:"Swords",           rarity:"cursed",   notes:"CURSED — causes uncontrolled berserking"},
+  {qty:1, name:"Broadsword of the Planes",           cat:"Weapons", sub:"Swords",           rarity:"legendary",notes:"Functions across planar boundaries"},
+  {qty:1, name:"Holy Avenger +6",                    cat:"Weapons", sub:"Swords",           rarity:"legendary",notes:"Paladin only. Dispels magic on hit. The finest blade in the vault."},
+  {qty:1, name:"Morpho Changeling Sword",            cat:"Weapons", sub:"Swords",           rarity:"named",    notes:"Homebrew or unique item — properties unknown. Ask Colton."},
+  // ── WEAPONS: TWO-HANDED SWORDS ──
+  {qty:1, name:"2H Sword +1",                        cat:"Weapons", sub:"Two-Handed Swords",rarity:"plus1",    notes:""},
+  {qty:1, name:"2H Sword +2",                        cat:"Weapons", sub:"Two-Handed Swords",rarity:"plus2",    notes:""},
+  {qty:1, name:"2H Sword +2 Giant Slayer",           cat:"Weapons", sub:"Two-Handed Swords",rarity:"plus2",    notes:"Double damage vs giants"},
+  {qty:2, name:"2H Sword +4",                        cat:"Weapons", sub:"Two-Handed Swords",rarity:"plus4",    notes:"2 swords"},
+  {qty:1, name:"2H Sword +4 — Ogre Size",            cat:"Weapons", sub:"Two-Handed Swords",rarity:"plus4",    notes:"Ogre sized"},
+  {qty:1, name:"Greatsword +4",                      cat:"Weapons", sub:"Two-Handed Swords",rarity:"plus4",    notes:""},
+  {qty:1, name:"2H Sword +3 / +6 Frostbrand",        cat:"Weapons", sub:"Two-Handed Swords",rarity:"plus4",    notes:"Cold damage, extinguishes fire, fire resistance"},
+  {qty:1, name:"Bar-Ethel, The True Death",          cat:"Weapons", sub:"Two-Handed Swords",rarity:"named",    notes:"Named blade. +1 / +2 vs Undead."},
+  // ── WEAPONS: AXES ──
+  {qty:2, name:"Battle Axe +1",                      cat:"Weapons", sub:"Axes",             rarity:"plus1",    notes:"2 axes"},
+  {qty:2, name:"Battle Axe +2",                      cat:"Weapons", sub:"Axes",             rarity:"plus2",    notes:"2 axes"},
+  {qty:3, name:"Battle Axe +3",                      cat:"Weapons", sub:"Axes",             rarity:"plus2",    notes:"3 axes"},
+  {qty:1, name:"Great Axe +4",                       cat:"Weapons", sub:"Axes",             rarity:"plus4",    notes:""},
+  {qty:1, name:"Bardiche +2",                        cat:"Weapons", sub:"Axes",             rarity:"plus2",    notes:""},
+  {qty:1, name:"Dwarven Thrower +3",                 cat:"Weapons", sub:"Axes",             rarity:"plus2",    notes:"Returns when thrown. Bonus damage for dwarves."},
+  // ── WEAPONS: HAMMERS ──
+  {qty:2, name:"Warhammer +1",                       cat:"Weapons", sub:"Hammers",          rarity:"plus1",    notes:"2 hammers"},
+  {qty:1, name:"Warhammer +2",                       cat:"Weapons", sub:"Hammers",          rarity:"plus2",    notes:"Shiny — notably well-crafted"},
+  {qty:1, name:"Warhammer +3 / +5 vs Undead",        cat:"Weapons", sub:"Hammers",          rarity:"plus2",    notes:"+5 vs undead"},
+  {qty:1, name:"Hammer +4",                          cat:"Weapons", sub:"Hammers",          rarity:"plus4",    notes:""},
+  {qty:1, name:"Mallet +1",                          cat:"Weapons", sub:"Hammers",          rarity:"plus1",    notes:""},
+  {qty:1, name:"Hammer of Thunderbolts",             cat:"Weapons", sub:"Hammers",          rarity:"legendary",notes:"Giant bane. Doubles STR with matching belt and gauntlets."},
+  {qty:1, name:"Maul of the Titans",                 cat:"Weapons", sub:"Hammers",          rarity:"legendary",notes:"Massive damage. Requires 18 STR to wield."},
+  // ── WEAPONS: MACES ──
+  {qty:1, name:"Mace +2",                            cat:"Weapons", sub:"Maces",            rarity:"plus2",    notes:""},
+  {qty:3, name:"Mace +3",                            cat:"Weapons", sub:"Maces",            rarity:"plus2",    notes:"3 maces"},
+  {qty:1, name:"Mace +3 / +6 vs Undead",             cat:"Weapons", sub:"Maces",            rarity:"plus4",    notes:"+6 vs undead"},
+  {qty:1, name:"Morning Star +2",                    cat:"Weapons", sub:"Maces",            rarity:"plus2",    notes:""},
+  // ── WEAPONS: DAGGERS ──
+  {qty:3, name:"Dagger +1",                          cat:"Weapons", sub:"Daggers",          rarity:"plus1",    notes:"3 daggers"},
+  {qty:2, name:"Dagger +1 / +2 vs Small Creatures",  cat:"Weapons", sub:"Daggers",          rarity:"plus1",    notes:"+2 vs creatures smaller than man-size"},
+  {qty:2, name:"Dagger +2",                          cat:"Weapons", sub:"Daggers",          rarity:"plus2",    notes:"2 daggers"},
+  {qty:1, name:"Dagger +2 / +3 vs Large Creatures",  cat:"Weapons", sub:"Daggers",          rarity:"plus2",    notes:"+3 vs creatures larger than man-size"},
+  {qty:1, name:"Knife +1",                           cat:"Weapons", sub:"Daggers",          rarity:"plus1",    notes:""},
+  {qty:1, name:"Knife +2",                           cat:"Weapons", sub:"Daggers",          rarity:"plus2",    notes:""},
+  // ── WEAPONS: STAVES ──
+  {qty:1, name:"Staff of the Magi",                  cat:"Weapons", sub:"Staves",           rarity:"legendary",notes:"One of the most powerful magical staves in existence"},
+  {qty:1, name:"Staff of Curing",                    cat:"Weapons", sub:"Staves",           rarity:"plus1",    notes:""},
+  {qty:1, name:"Staff of Striking",                  cat:"Weapons", sub:"Staves",           rarity:"plus1",    notes:""},
+  {qty:1, name:"Staff Mace",                         cat:"Weapons", sub:"Staves",           rarity:"plus1",    notes:"Functions as both staff and mace"},
+  {qty:1, name:"Staff of Slinging",                  cat:"Weapons", sub:"Staves",           rarity:"plus1",    notes:"Hurls stones at great force"},
+  // ── WEAPONS: POLEARMS & SPEARS ──
+  {qty:1, name:"Polearm +1",                         cat:"Weapons", sub:"Polearms",         rarity:"plus1",    notes:""},
+  {qty:1, name:"Halberd +2",                         cat:"Weapons", sub:"Polearms",         rarity:"plus2",    notes:""},
+  {qty:1, name:"Spear +2",                           cat:"Weapons", sub:"Spears",           rarity:"plus2",    notes:""},
+  {qty:1, name:"Spear +4",                           cat:"Weapons", sub:"Spears",           rarity:"plus4",    notes:""},
+  {qty:1, name:"Spear — Cursed Backbiter",           cat:"Weapons", sub:"Spears",           rarity:"cursed",   notes:"CURSED — strikes the wielder on every attack"},
+  {qty:1, name:"Javelin +2",                         cat:"Weapons", sub:"Spears",           rarity:"plus2",    notes:""},
+  // ── WEAPONS: RANGED ──
+  {qty:2, name:"Short Bow +1",                       cat:"Weapons", sub:"Ranged",           rarity:"plus1",    notes:"2 bows"},
+  {qty:8, name:"Darts +1",                           cat:"Weapons", sub:"Ranged",           rarity:"plus1",    notes:"8 darts"},
+  {qty:4, name:"Darts +3",                           cat:"Weapons", sub:"Ranged",           rarity:"plus2",    notes:"4 darts"},
+  {qty:300,name:"Silver Crossbow Bolts",             cat:"Weapons", sub:"Ranged",           rarity:"standard", notes:"Silver-tipped. Effective vs lycanthropes and certain undead."},
+  // ── RINGS ──
+  {qty:1, name:"Ring of Protection +1",              cat:"Rings",   sub:"Protection",       rarity:"plus1",    notes:""},
+  {qty:1, name:"Ring of Protection +2",              cat:"Rings",   sub:"Protection",       rarity:"plus2",    notes:""},
+  {qty:1, name:"Ring of Waterwalking",               cat:"Rings",   sub:"Movement",         rarity:"plus1",    notes:"Walk on water as solid ground"},
+  {qty:1, name:"Ring of Shocking Grasp",             cat:"Rings",   sub:"Offensive",        rarity:"plus1",    notes:"Delivers electric shock on touch"},
+  {qty:1, name:"Ring of Truth",                      cat:"Rings",   sub:"Detection",        rarity:"plus1",    notes:"Detects lies"},
+  {qty:1, name:"Ring of Animal Friendship",          cat:"Rings",   sub:"Utility",          rarity:"plus1",    notes:"Charms animals"},
+  // ── WONDROUS ITEMS ──
+  {qty:1, name:"Cloak of Arachnida",                 cat:"Wondrous Items", sub:"Cloaks",    rarity:"plus2",    notes:"Spider climb, web immunity, limited web ability"},
+  {qty:1, name:"Brooch of Shielding",                cat:"Wondrous Items", sub:"Worn",      rarity:"plus1",    notes:"Absorbs magic missile damage"},
+  {qty:1, name:"Helm of Comprehension",              cat:"Wondrous Items", sub:"Helms",     rarity:"plus1",    notes:"Comprehend languages"},
+  {qty:2, name:"Belt of Many Pouches",               cat:"Wondrous Items", sub:"Belts",     rarity:"plus1",    notes:"Each pouch holds more than it appears — 2 in vault"},
+  {qty:1, name:"Bracers of Brachiation",             cat:"Wondrous Items", sub:"Bracers",   rarity:"plus1",    notes:"Swing through trees and terrain like an ape"},
+  {qty:1, name:"Eyes of Minute Seeing",              cat:"Wondrous Items", sub:"Eyes",      rarity:"plus1",    notes:"See tiny details, read small text at distance"},
+  {qty:1, name:"Eyes of Charming",                   cat:"Wondrous Items", sub:"Eyes",      rarity:"plus2",    notes:"Charm person by gaze"},
+  {qty:1, name:"Eyes of the Eagle",                  cat:"Wondrous Items", sub:"Eyes",      rarity:"plus1",    notes:"Exceptional long-distance vision"},
+  {qty:1, name:"Periapt of Wound Closure",           cat:"Wondrous Items", sub:"Amulets",   rarity:"plus1",    notes:"Stabilizes dying characters automatically"},
+  {qty:1, name:"Amulet of the Planes",               cat:"Wondrous Items", sub:"Amulets",   rarity:"legendary",notes:"Planar travel — dangerous without knowledge of planes"},
+  {qty:1, name:"Talisman of Pure Good",              cat:"Wondrous Items", sub:"Talismans", rarity:"legendary",notes:"Evil clerics touching this take damage. Good clerics only."},
+  {qty:1, name:"Talisman of Zagy",                   cat:"Wondrous Items", sub:"Talismans", rarity:"legendary",notes:"Unpredictable effects based on alignment and luck"},
+  {qty:1, name:"Scarab of Protection",               cat:"Wondrous Items", sub:"Scarabs",   rarity:"plus2",    notes:"Absorbs death spells and energy drains"},
+  {qty:1, name:"Scarab of Insanity",                 cat:"Wondrous Items", sub:"Scarabs",   rarity:"cursed",   notes:"CURSED — causes insanity when used"},
+  {qty:1, name:"Philosopher's Stone",                cat:"Wondrous Items", sub:"Misc",      rarity:"legendary",notes:"Transmutes base metals to silver or gold"},
+  {qty:1, name:"Crystal Ball",                       cat:"Wondrous Items", sub:"Misc",      rarity:"legendary",notes:"Scrying device"},
+  {qty:1, name:"Cubic Gate",                         cat:"Wondrous Items", sub:"Misc",      rarity:"legendary",notes:"Six-sided cube. Each face linked to a different plane."},
+  {qty:1, name:"Pearl of Power",                     cat:"Wondrous Items", sub:"Misc",      rarity:"plus1",    notes:"Recover one expended spell slot"},
+  {qty:1, name:"Phylactery of Long Years",           cat:"Wondrous Items", sub:"Misc",      rarity:"legendary",notes:"Slows aging significantly"},
+  {qty:1, name:"Incense of Meditation",              cat:"Wondrous Items", sub:"Misc",      rarity:"plus1",    notes:"Doubles spell effect for clerics"},
+  {qty:1, name:"Oil of Impact",                      cat:"Wondrous Items", sub:"Misc",      rarity:"plus1",    notes:"Adds impact damage to weapons or projectiles"},
+  {qty:2, name:"Dust of Dryness",                    cat:"Wondrous Items", sub:"Misc",      rarity:"plus1",    notes:"Absorbs large quantities of water into a marble-sized pellet"},
+  {qty:1, name:"Dust of Disappearance",              cat:"Wondrous Items", sub:"Misc",      rarity:"plus1",    notes:"Sprinkle on creature or object to render invisible"},
+  {qty:1, name:"Bag of Tricks (Type B)",             cat:"Wondrous Items", sub:"Misc",      rarity:"plus1",    notes:"Produces small animals that fight for the user"},
+  {qty:1, name:"Robe of Useful Items",               cat:"Wondrous Items", sub:"Robes",     rarity:"plus1",    notes:"Patches on robe become useful items when removed"},
+  {qty:1, name:"Censer of Controlling Air Elementals",cat:"Wondrous Items",sub:"Misc",      rarity:"plus2",    notes:"Summon and control air elementals"},
+  {qty:1, name:"Chime of Opening",                   cat:"Wondrous Items", sub:"Misc",      rarity:"plus1",    notes:"Opens locks, doors, portals. Limited charges."},
+  {qty:1, name:"Net of Snaring",                     cat:"Wondrous Items", sub:"Misc",      rarity:"plus1",    notes:"Entangles creatures"},
+  {qty:1, name:"Net of Entrapment",                  cat:"Wondrous Items", sub:"Misc",      rarity:"plus2",    notes:"Stronger entanglement net"},
+  // ── RODS & WANDS ──
+  {qty:1, name:"Rod of Absorption",                  cat:"Rods & Wands", sub:"Rods",        rarity:"legendary",notes:"Absorbs spells cast at wielder, converts to spell slots"},
+  {qty:1, name:"Rod of Cancellation",                cat:"Rods & Wands", sub:"Rods",        rarity:"legendary",notes:"Drains all magical properties from target item on touch"},
+  {qty:1, name:"Rod of Beguiling",                   cat:"Rods & Wands", sub:"Rods",        rarity:"plus2",    notes:"Charms all within range"},
+  {qty:1, name:"Rod of Flailing",                    cat:"Rods & Wands", sub:"Rods",        rarity:"plus2",    notes:"Attacks multiple targets"},
+  {qty:1, name:"Rod of Splendor",                    cat:"Rods & Wands", sub:"Rods",        rarity:"plus2",    notes:"Creates magnificent clothing and a feast"},
+  {qty:1, name:"Wand of Wonder",                     cat:"Rods & Wands", sub:"Wands",       rarity:"plus2",    notes:"Random effects. Wildly unpredictable."},
+  {qty:1, name:"Wand of Metal Command",              cat:"Rods & Wands", sub:"Wands",       rarity:"plus2",    notes:"Commands and shapes metal"},
+  {qty:1, name:"Wand of Defoliation",                cat:"Rods & Wands", sub:"Wands",       rarity:"plus1",    notes:"Destroys plant life in area"},
+  {qty:1, name:"Wand of Paralyzation",               cat:"Rods & Wands", sub:"Wands",       rarity:"plus2",    notes:"Paralyzes targets in cone"},
+  {qty:1, name:"Horn of Valhalla (Iron)",             cat:"Rods & Wands", sub:"Misc",        rarity:"legendary",notes:"Summons berserker warriors. Requires 7th level fighter."},
+  {qty:1, name:"Horn of Blasting",                   cat:"Rods & Wands", sub:"Misc",        rarity:"plus2",    notes:"Sonic cone attack — damages and stuns. Prolonged use may shatter the horn."},
+  // ── POTIONS ──
+  {qty:110,name:"Potion of Healing",                 cat:"Potions", sub:"Healing",          rarity:"standard", notes:""},
+  {qty:1, name:"Elixir of Health",                   cat:"Potions", sub:"Healing",          rarity:"plus1",    notes:"Cures all diseases, blindness, deafness, and similar afflictions"},
+  {qty:2, name:"Potion of Vitality",                 cat:"Potions", sub:"Healing",          rarity:"plus1",    notes:"Restores fatigue and minor conditions"},
+  {qty:1, name:"Super Heroism Potion",               cat:"Potions", sub:"Combat",           rarity:"plus2",    notes:"Temporarily raises fighter level and grants bonus HP"},
+  {qty:1, name:"Potion of Bull Strength",            cat:"Potions", sub:"Combat",           rarity:"plus1",    notes:"Raises STR to exceptional levels"},
+  {qty:1, name:"Potion of Stone Giant Strength",     cat:"Potions", sub:"Combat",           rarity:"plus2",    notes:"STR equivalent to a stone giant"},
+  {qty:1, name:"Potion of Speed",                    cat:"Potions", sub:"Combat",           rarity:"plus1",    notes:"Doubles movement and attacks"},
+  {qty:1, name:"Potion of Fire Breath",              cat:"Potions", sub:"Combat",           rarity:"plus1",    notes:"Allows user to breathe fire"},
+  {qty:1, name:"Potion of Eagle Splendor",           cat:"Potions", sub:"Ability",          rarity:"plus1",    notes:"Raises CHA temporarily"},
+  {qty:1, name:"Potion of Endure Elements",          cat:"Potions", sub:"Ability",          rarity:"plus1",    notes:"Protects against environmental extremes"},
+  {qty:1, name:"Potion of Longevity",                cat:"Potions", sub:"Ability",          rarity:"plus2",    notes:"Reduces caster age — small chance of reversing all longevity potions ever consumed"},
+  {qty:1, name:"Potion of Polymorph",                cat:"Potions", sub:"Ability",          rarity:"plus1",    notes:"Polymorph self into another creature"},
+  {qty:1, name:"Potion of Ventriloquism",            cat:"Potions", sub:"Ability",          rarity:"plus1",    notes:"Throw voice at will for duration"},
+  {qty:1, name:"Potion of Plant Control",            cat:"Potions", sub:"Control",          rarity:"plus1",    notes:"Command and direct plant creatures and vegetation"},
+  {qty:2, name:"Potion of Human Control",            cat:"Potions", sub:"Control",          rarity:"plus1",    notes:"Charm and direct humans"},
+  {qty:1, name:"Potion of ESP",                      cat:"Potions", sub:"Detection",        rarity:"plus1",    notes:"Read surface thoughts of nearby creatures"},
+  {qty:2, name:"Potion of Clairaudience",            cat:"Potions", sub:"Detection",        rarity:"plus1",    notes:"Hear at a distance"},
+  {qty:1, name:"Potion of Levitation",               cat:"Potions", sub:"Movement",         rarity:"plus1",    notes:"Levitate vertically at will"},
+  {qty:2, name:"Potion of Waterbreathing",           cat:"Potions", sub:"Movement",         rarity:"plus1",    notes:"Breathe underwater"},
+  {qty:3, name:"Potion of Climbing",                 cat:"Potions", sub:"Movement",         rarity:"plus1",    notes:"Climb any surface at full movement rate"},
+  {qty:1, name:"Oil of Etherealness",                cat:"Potions", sub:"Movement",         rarity:"plus2",    notes:"Enter the ethereal plane — pass through solid matter"},
+  {qty:1, name:"Potion of Sweet Water",              cat:"Potions", sub:"Utility",          rarity:"plus1",    notes:"Purifies and sweetens large quantities of water"},
+  {qty:2, name:"Philter of Glibness",                cat:"Potions", sub:"Utility",          rarity:"plus1",    notes:"Speak convincingly — bonuses to deception and persuasion"},
+  {qty:1, name:"Philter of Beauty",                  cat:"Potions", sub:"Utility",          rarity:"plus1",    notes:"Raises CHA to maximum"},
+  {qty:2, name:"Oil of Acid Resistance",             cat:"Potions", sub:"Protection",       rarity:"plus1",    notes:"Grants resistance to acid damage"},
+  {qty:1, name:"Oil of Disenchantment",              cat:"Potions", sub:"Utility",          rarity:"plus1",    notes:"Removes enchantments from items or creatures"},
+  // ── SCROLLS ──
+  {qty:2, name:"Scroll of Protection from Fire",                  cat:"Scrolls", sub:"Protection", rarity:"plus1", notes:""},
+  {qty:1, name:"Scroll of Protection from Weapons",               cat:"Scrolls", sub:"Protection", rarity:"plus1", notes:""},
+  {qty:1, name:"Scroll of Protection from Gas",                   cat:"Scrolls", sub:"Protection", rarity:"plus1", notes:""},
+  {qty:2, name:"Scroll of Protection from Breath Weapon (Non-Dragon)", cat:"Scrolls", sub:"Protection", rarity:"plus1", notes:""},
+  {qty:1, name:"Scroll of Protection from Petrification",         cat:"Scrolls", sub:"Protection", rarity:"plus1", notes:""},
+  {qty:1, name:"Scroll of Protection from Lycanthropes",          cat:"Scrolls", sub:"Protection", rarity:"plus1", notes:""},
+  {qty:2, name:"Scroll of Protection from Poison",                cat:"Scrolls", sub:"Protection", rarity:"plus1", notes:""},
+  {qty:1, name:"Scroll of Protection from Possession",            cat:"Scrolls", sub:"Protection", rarity:"plus1", notes:""},
+  {qty:1, name:"Scroll of Protection from Magic Weapons",         cat:"Scrolls", sub:"Protection", rarity:"plus1", notes:""},
+  {qty:1, name:"Scroll of Protection from Electricity",           cat:"Scrolls", sub:"Protection", rarity:"plus1", notes:""},
+  {qty:2, name:"Scroll of Protection from Magic",                 cat:"Scrolls", sub:"Protection", rarity:"plus1", notes:""},
+  {qty:2, name:"Scroll of Protection from Magical Blunt Weapons", cat:"Scrolls", sub:"Protection", rarity:"plus1", notes:""},
+  {qty:1, name:"Scroll of Protection from Cold",                  cat:"Scrolls", sub:"Protection", rarity:"plus1", notes:""},
+  {qty:1, name:"Scroll of Protection from Evil",                  cat:"Scrolls", sub:"Protection", rarity:"plus1", notes:""},
+  {qty:4, name:"Scroll of Protection from Undead",                cat:"Scrolls", sub:"Protection", rarity:"plus1", notes:"4 scrolls"},
+  {qty:4, name:"Scroll of Protection from Elementals",            cat:"Scrolls", sub:"Protection", rarity:"plus1", notes:""},
+  {qty:1, name:"Scroll of Protection from Plants",                cat:"Scrolls", sub:"Protection", rarity:"plus1", notes:""},
+  {qty:1, name:"Scroll of Protection from Cantrips (Lvl 2)",      cat:"Scrolls", sub:"Protection", rarity:"plus1", notes:"Level 2 scroll"},
+  {qty:1, name:"Scroll of Protection from Devils",                cat:"Scrolls", sub:"Protection", rarity:"plus1", notes:""},
+  {qty:1, name:"Cursed Scroll",                                   cat:"Scrolls", sub:"Cursed",     rarity:"cursed", notes:"CURSED — contents unknown. Do not read aloud."},
+  // ── GEMS ──
+  {qty:1,  name:"Aquamarine",       cat:"Gems", sub:"Precious Stones",  rarity:"standard", notes:"500 gp"},
+  {qty:1,  name:"Blue Sapphire",    cat:"Gems", sub:"Precious Stones",  rarity:"standard", notes:"8,000 gp"},
+  {qty:1,  name:"Black Sapphire",   cat:"Gems", sub:"Precious Stones",  rarity:"standard", notes:"Value unknown"},
+  {qty:2,  name:"Star Ruby",        cat:"Gems", sub:"Precious Stones",  rarity:"standard", notes:"1,000 gp each"},
+  {qty:1,  name:"Yellow Topaz",     cat:"Gems", sub:"Precious Stones",  rarity:"standard", notes:"600 gp"},
+  {qty:1,  name:"Diamond",          cat:"Gems", sub:"Precious Stones",  rarity:"standard", notes:""},
+  {qty:2,  name:"Opal",             cat:"Gems", sub:"Precious Stones",  rarity:"standard", notes:""},
+  {qty:2,  name:"Oriental Emerald", cat:"Gems", sub:"Precious Stones",  rarity:"standard", notes:""},
+  {qty:1,  name:"Oriental Topaz",   cat:"Gems", sub:"Precious Stones",  rarity:"standard", notes:""},
+  {qty:2,  name:"Oriental Amethyst",cat:"Gems", sub:"Precious Stones",  rarity:"standard", notes:""},
+  {qty:1,  name:"Ruby",             cat:"Gems", sub:"Precious Stones",  rarity:"standard", notes:""},
+  {qty:1,  name:"Fire Opal",        cat:"Gems", sub:"Precious Stones",  rarity:"standard", notes:""},
+  {qty:10, name:"Black Pearl",      cat:"Gems", sub:"Precious Stones",  rarity:"standard", notes:""},
+  {qty:30, name:"Moonstone",        cat:"Gems", sub:"Semi-Precious",    rarity:"standard", notes:"100 gp each"},
+  {qty:1,  name:"Rhodochrosite",    cat:"Gems", sub:"Semi-Precious",    rarity:"standard", notes:"10 gp"},
+  {qty:1,  name:"Lapis Lazuli",     cat:"Gems", sub:"Semi-Precious",    rarity:"standard", notes:"10 gp"},
+  {qty:10, name:"Turquoise",        cat:"Gems", sub:"Semi-Precious",    rarity:"standard", notes:"10 gp each"},
+  {qty:10, name:"Black Obsidian",   cat:"Gems", sub:"Semi-Precious",    rarity:"standard", notes:""},
+  {qty:10, name:"Blue Quartz",      cat:"Gems", sub:"Semi-Precious",    rarity:"standard", notes:""},
+  {qty:10, name:"Citrine",          cat:"Gems", sub:"Semi-Precious",    rarity:"standard", notes:""},
+  {qty:10, name:"Chalcedony",       cat:"Gems", sub:"Semi-Precious",    rarity:"standard", notes:""},
+  {qty:10, name:"Violet Garnet",    cat:"Gems", sub:"Semi-Precious",    rarity:"standard", notes:""},
+  {qty:10, name:"Black Jet",        cat:"Gems", sub:"Semi-Precious",    rarity:"standard", notes:""},
+  {qty:10, name:"Crimson Coral",    cat:"Gems", sub:"Semi-Precious",    rarity:"standard", notes:""},
+  {qty:10, name:"Peridot",          cat:"Gems", sub:"Semi-Precious",    rarity:"standard", notes:""},
+  // ── VALUABLES ──
+  {qty:1,  name:"Wine",                        cat:"Valuables", sub:"Trade Goods",  rarity:"standard", notes:"1,100 gp"},
+  {qty:1,  name:"Porcelain Amphora",           cat:"Valuables", sub:"Trade Goods",  rarity:"standard", notes:"1,500 gp"},
+  {qty:1,  name:"Black Dragon Scale Boots",    cat:"Valuables", sub:"Trade Goods",  rarity:"standard", notes:"400 gp"},
+  {qty:1,  name:"Gold Slag Pile",              cat:"Valuables", sub:"Trade Goods",  rarity:"standard", notes:"6,000 gp"},
+  {qty:4,  name:"Gold Statuettes",             cat:"Valuables", sub:"Art Objects",  rarity:"standard", notes:""},
+  {qty:1,  name:"Box — Silver with Gems",      cat:"Valuables", sub:"Art Objects",  rarity:"standard", notes:""},
+  {qty:1,  name:"Goblet — Silver and Gold",    cat:"Valuables", sub:"Art Objects",  rarity:"standard", notes:""},
+  {qty:1,  name:"Statuette — Gold with Gems",  cat:"Valuables", sub:"Art Objects",  rarity:"standard", notes:""},
+  {qty:1,  name:"Orb — Silver with Gems",      cat:"Valuables", sub:"Art Objects",  rarity:"standard", notes:""},
+  {qty:1,  name:"Goblet — Gold with Gems",     cat:"Valuables", sub:"Art Objects",  rarity:"standard", notes:""},
+  {qty:1,  name:"Gold Buckle with Peridot",    cat:"Valuables", sub:"Jewelry",      rarity:"standard", notes:""},
+  {qty:1,  name:"Earring — Silver with Gems",  cat:"Valuables", sub:"Jewelry",      rarity:"standard", notes:""},
+  {qty:1,  name:"Diadem — Platinum with Gems", cat:"Valuables", sub:"Jewelry",      rarity:"standard", notes:""},
+  {qty:1,  name:"Fob — Gold",                  cat:"Valuables", sub:"Jewelry",      rarity:"standard", notes:""},
+  {qty:1,  name:"Choker — Gold with Gems",     cat:"Valuables", sub:"Jewelry",      rarity:"standard", notes:""},
+  {qty:1,  name:"Clasp — Jade",                cat:"Valuables", sub:"Jewelry",      rarity:"standard", notes:""},
+  {qty:1,  name:"Ring — Gold",                 cat:"Valuables", sub:"Jewelry",      rarity:"standard", notes:"Non-magical"},
+  {qty:1,  name:"Necklace — Gold",             cat:"Valuables", sub:"Jewelry",      rarity:"standard", notes:""},
+  {qty:1,  name:"Collar — Silver and Gold",    cat:"Valuables", sub:"Jewelry",      rarity:"standard", notes:""},
+  {qty:1,  name:"Locket — Platinum with Gems", cat:"Valuables", sub:"Jewelry",      rarity:"standard", notes:""},
+  {qty:1,  name:"Pin — Ivory",                 cat:"Valuables", sub:"Jewelry",      rarity:"standard", notes:""},
+  {qty:2,  name:"Arm Band — Silver with Gems", cat:"Valuables", sub:"Jewelry",      rarity:"standard", notes:""},
+  {qty:1,  name:"Pin — Platinum",              cat:"Valuables", sub:"Jewelry",      rarity:"standard", notes:""},
+  {qty:1,  name:"Brooch — Gold with Gems",     cat:"Valuables", sub:"Jewelry",      rarity:"standard", notes:""},
 ];
 
-const CATEGORIES = ["All", ...new Set(VAULT.map(i => i.cat))];
-let activeCat = "All";
+// Build category and subcategory maps
+const CATS = ["All", ...new Set(VAULT.map(i => i.cat))];
+const SUBS = {};
+VAULT.forEach(i => {
+  if (!SUBS[i.cat]) SUBS[i.cat] = new Set();
+  SUBS[i.cat].add(i.sub);
+});
 
-function buildFilters() {
-  document.getElementById("catFilters").innerHTML = CATEGORIES.map(c =>
+let activeCat = "All";
+let activeSub = "All";
+
+function buildCatFilters() {
+  document.getElementById("catFilters").innerHTML = CATS.map(c =>
     `<button class="filter-btn${c===activeCat?" active":""}" onclick="setCat('${c}')">${c}</button>`
   ).join("");
 }
 
-function setCat(cat) { activeCat = cat; buildFilters(); renderTable(); }
+function buildSubFilters() {
+  const wrap = document.getElementById("subFilters");
+  if (activeCat === "All" || !SUBS[activeCat]) {
+    wrap.innerHTML = "";
+    return;
+  }
+  const subs = ["All", ...SUBS[activeCat]];
+  wrap.innerHTML = subs.map(s =>
+    `<button class="subfilter-btn${s===activeSub?" active":""}" onclick="setSub('${s}')">${s}</button>`
+  ).join("");
+}
 
-function filterVault() { renderTable(); }
+function setCat(cat) {
+  activeCat = cat;
+  activeSub = "All";
+  buildCatFilters();
+  buildSubFilters();
+  renderTable();
+}
+
+function setSub(sub) {
+  activeSub = sub;
+  buildSubFilters();
+  renderTable();
+}
 
 function renderTable() {
   const search = document.getElementById("vaultSearch").value.toLowerCase();
   const filtered = VAULT.filter(item => {
-    const catOk = activeCat === "All" || item.cat === activeCat;
-    const searchOk = !search || item.name.toLowerCase().includes(search) || item.sub.toLowerCase().includes(search) || item.notes.toLowerCase().includes(search);
-    return catOk && searchOk;
+    const catOk  = activeCat === "All" || item.cat === activeCat;
+    const subOk  = activeSub === "All" || item.sub === activeSub;
+    const srcOk  = !search || item.name.toLowerCase().includes(search) || item.sub.toLowerCase().includes(search) || item.notes.toLowerCase().includes(search);
+    return catOk && subOk && srcOk;
   });
 
-  const nameClass = r => ({magical:"magical",legendary:"legendary",cursed:"cursed",named:"named"}[r]||"");
-  const pipClass  = r => ({standard:"pip-standard",magical:"pip-magical",legendary:"pip-legendary",cursed:"pip-cursed",named:"pip-named"}[r]||"pip-standard");
+  const nc = r => "r-"+r;
+  const pc = r => "pip-"+r;
 
   const tbody = document.getElementById("vaultBody");
-  const noResults = document.getElementById("noResults");
+  const noRes  = document.getElementById("noResults");
 
   if (!filtered.length) {
     tbody.innerHTML = "";
-    noResults.style.display = "block";
+    noRes.style.display = "block";
   } else {
-    noResults.style.display = "none";
+    noRes.style.display = "none";
     tbody.innerHTML = filtered.map(item => `
       <tr>
         <td class="qty-cell">${item.qty}</td>
-        <td class="item-name-cell ${nameClass(item.rarity)}"><span class="rarity-pip ${pipClass(item.rarity)}"></span>${item.name}</td>
+        <td class="item-name-cell ${nc(item.rarity)}"><span class="rarity-pip ${pc(item.rarity)}"></span>${item.name}</td>
         <td><span class="cat-tag">${item.cat}</span></td>
         <td><span class="cat-tag">${item.sub}</span></td>
-        <td style="font-style:italic;font-size:.85rem;color:var(--text-muted)">${item.notes}</td>
+        <td class="notes-cell">${item.notes}</td>
       </tr>`).join("");
   }
 
@@ -416,7 +465,8 @@ function renderTable() {
     `Showing <span>${filtered.length}</span> of <span>${VAULT.length}</span> items`;
 }
 
-buildFilters();
+buildCatFilters();
+buildSubFilters();
 renderTable();
 </script>
 </body>
