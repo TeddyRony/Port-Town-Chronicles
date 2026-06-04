@@ -6,144 +6,242 @@
   <title>The Port Town Chronicles</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black:        #07060400;
+      --bg:           #0b0a07;
+      --surface:      #141209;
+      --surface-2:    #1c1a10;
+      --surface-3:    #252115;
+      --border:       #302b18;
+      --border-light: #4a4422;
+      --gold:         #c9a84c;
+      --gold-light:   #e8c96a;
+      --gold-bright:  #f5df8a;
+      --gold-dim:     #6e5a28;
+      --gold-glow:    rgba(201,168,76,0.15);
+      --ember:        #b85c2a;
+      --ember-dim:    #7a3a18;
+      --crystal:      #4a7a9b;
+      --crystal-dim:  #2a4a60;
+      --text-primary: #e8e0cc;
+      --text-secondary:#a89870;
+      --text-muted:   #635840;
+      --font-display: 'Cinzel Decorative', serif;
+      --font-heading: 'Cinzel', serif;
+      --font-body:    'IM Fell English', serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--bg); color: var(--text-primary); font-family: var(--font-body); min-height: 100vh; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 999;
+      background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.7) 100%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: cover, 180px 180px; opacity: 0.04;
+    }
+
+    /* NAV */
+    .site-nav { position: sticky; top: 0; z-index: 100; background: rgba(11,10,7,0.97); border-bottom: 1px solid var(--border); backdrop-filter: blur(12px); }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .nav-brand { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--gold); text-decoration: none; letter-spacing: 0.05em; }
+    .nav-links { display: flex; align-items: center; }
+    .nav-link { font-family: var(--font-heading); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-secondary); text-decoration: none; padding: 0 1.25rem; height: 60px; display: flex; align-items: center; border-right: 1px solid var(--border); transition: color 0.2s, background 0.2s; }
+    .nav-link:first-child { border-left: 1px solid var(--border); }
+    .nav-link:hover, .nav-link.active { color: var(--gold); background: rgba(201,168,76,0.04); }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 4rem 2rem 5rem; position: relative; text-align: center; background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.04) 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 50% 50%, rgba(74,122,155,0.04) 0%, transparent 60%); }
+    .hero::before, .hero::after { content: ''; position: absolute; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, var(--border-light), transparent); }
+    .hero::before { top: 4rem; }
+    .hero::after  { bottom: 4rem; }
+
+    .crest-wrap { margin-bottom: 2.5rem; position: relative; opacity: 0; animation: fadeUp 1s ease forwards; animation-delay: 0.2s; }
+    .crest-svg { width: 180px; height: 180px; filter: drop-shadow(0 0 30px rgba(201,168,76,0.2)); }
+    .crest-ring { transform-origin: center; animation: rotateSlow 40s linear infinite; }
+
+    .hero-eyebrow { font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--ember); margin-bottom: 1rem; opacity: 0; animation: fadeUp 0.8s ease forwards; animation-delay: 0.5s; }
+    .hero-title { font-family: var(--font-display); font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 900; color: var(--gold-light); line-height: 1.1; letter-spacing: 0.03em; text-shadow: 0 0 80px rgba(201,168,76,0.25), 0 0 120px rgba(201,168,76,0.1); margin-bottom: 0.5rem; opacity: 0; animation: fadeUp 0.8s ease forwards; animation-delay: 0.65s; }
+    .hero-subtitle { font-family: var(--font-heading); font-size: 0.9rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.8s ease forwards; animation-delay: 0.8s; }
+    .hero-divider { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.8s ease forwards; animation-delay: 0.9s; }
+    .hero-divider::before, .hero-divider::after { content: ''; width: 100px; height: 1px; background: linear-gradient(to right, transparent, var(--border-light)); }
+    .hero-divider::after { background: linear-gradient(to left, transparent, var(--border-light)); }
+    .hero-divider span { color: var(--gold-dim); font-size: 0.7rem; letter-spacing: 0.3em; }
+    .hero-lore { font-family: var(--font-body); font-style: italic; font-size: 1.2rem; color: var(--text-secondary); max-width: 560px; line-height: 1.85; opacity: 0; animation: fadeUp 0.8s ease forwards; animation-delay: 1s; }
+    .hero-scroll { position: absolute; bottom: 5.5rem; left: 50%; transform: translateX(-50%); font-family: var(--font-heading); font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-muted); opacity: 0; animation: fadeUp 0.8s ease forwards, pulse 3s ease-in-out 2s infinite; animation-delay: 1.5s, 1.5s; }
+
+    /* CARDS */
+    .sections { max-width: 1100px; margin: 0 auto; padding: 5rem 2rem 6rem; }
+    .sections-eyebrow { font-family: var(--font-heading); font-size: 0.8rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--text-muted); text-align: center; margin-bottom: 3rem; }
+    .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+    .card { position: relative; background: var(--surface); border: 1px solid var(--border); padding: 2.5rem 2.5rem 3rem; text-decoration: none; display: flex; flex-direction: column; overflow: hidden; transition: border-color 0.3s, background 0.3s; cursor: pointer; opacity: 0; animation: fadeUp 0.7s ease forwards; }
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(to right, transparent, var(--gold-dim), transparent); opacity: 0; transition: opacity 0.3s; }
+    .card::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 50% 0%, var(--gold-glow), transparent); opacity: 0; transition: opacity 0.4s; pointer-events: none; }
+    .card:hover { border-color: var(--border-light); background: var(--surface-2); }
+    .card:hover::before { opacity: 1; }
+    .card:hover::after  { opacity: 1; }
+
+    .card--journal::before { background: linear-gradient(to right, transparent, var(--ember-dim), transparent); }
+    .card--journal::after  { background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(184,92,42,0.1), transparent); }
+    .card--tools::before   { background: linear-gradient(to right, transparent, var(--crystal-dim), transparent); }
+    .card--tools::after    { background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(74,122,155,0.1), transparent); }
+
+    .card-number { font-family: var(--font-heading); font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1.25rem; }
+    .card-icon   { font-size: 2.5rem; margin-bottom: 1rem; display: block; filter: grayscale(0.3); }
+    .card-title  { font-family: var(--font-display); font-size: clamp(1.2rem, 1.8vw, 1.6rem); font-weight: 700; color: var(--gold-light); line-height: 1.2; margin-bottom: 0.75rem; }
+    .card--journal .card-title { color: #d4834a; }
+    .card--tools   .card-title { color: #6aabb8; }
+    .card-desc  { font-family: var(--font-body); font-style: italic; font-size: 1rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 1.5rem; flex: 1; }
+    .card-arrow { font-family: var(--font-heading); font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dim); transition: color 0.2s, letter-spacing 0.2s; }
+    .card--journal .card-arrow { color: var(--ember-dim); }
+    .card--tools   .card-arrow { color: var(--crystal-dim); }
+    .card:hover .card-arrow         { color: var(--gold);    letter-spacing: 0.3em; }
+    .card--journal:hover .card-arrow { color: var(--ember); }
+    .card--tools:hover   .card-arrow { color: var(--crystal); }
+
+    /* FOOTER */
+    .site-footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; text-align: center; }
+    .footer-emblem  { color: var(--gold-dim); font-size: 1rem; margin-bottom: 0.75rem; }
+    .footer-guild   { font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 0.35rem; }
+    .footer-tagline { font-family: var(--font-body); font-style: italic; font-size: 1rem; color: var(--text-muted); margin-bottom: 0.25rem; }
+    .footer-note    { font-family: var(--font-heading); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); opacity: 0.4; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulse  { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.9; } }
+    @keyframes rotateSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    @media (max-width: 900px) {
+      .cards-grid { grid-template-columns: 1fr; }
+      .nav-brand  { display: none; }
+      .nav-link   { font-size: 0.7rem; padding: 0 0.75rem; }
+      .hero-title { font-size: 2rem; }
+    }
+  </style>
 </head>
 <body>
 
-  <div class="noise-overlay"></div>
-
-  <header class="site-header">
-    <div class="header-inner">
-      <div class="site-brand">
-        <div class="brand-emblem">✦</div>
-        <div class="brand-text">
-          <h1 class="site-title">The Port Town Chronicles</h1>
-          <p class="site-subtitle">A Record of the Guild — Compiled in Service &amp; in Blood</p>
-        </div>
-        <div class="brand-emblem">✦</div>
-      </div>
-      <nav class="site-nav">
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">The Port Town Chronicles</a>
+      <div class="nav-links">
         <a href="index.html" class="nav-link active">Home</a>
         <a href="journal.html" class="nav-link">Journal</a>
         <a href="guild.html" class="nav-link">The Guild</a>
         <a href="tools.html" class="nav-link">Tools</a>
         <a href="vault.html" class="nav-link">The Vault</a>
         <a href="lore.html" class="nav-link">Lore</a>
-      </nav>
+      </div>
     </div>
-  </header>
+  </nav>
 
-  <main class="site-main">
+  <section class="hero">
 
-    <section class="hero">
-      <div class="hero-inner">
-        <p class="hero-eyebrow">Currently Under Siege</p>
-        <h2 class="hero-title">Port Town Stands</h2>
-        <p class="hero-body">These are the records of those who answered when the city called — soldiers, wanderers, thieves, and worse. What follows is neither legend nor propaganda. It is what happened, set down as faithfully as memory and ink allow.</p>
-        <div class="hero-rule"><span>✦</span></div>
-        <a href="journal.html" class="hero-cta">Read the Chronicles</a>
-      </div>
-    </section>
+    <div class="crest-wrap">
+      <svg class="crest-svg" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+        <g class="crest-ring">
+          <circle cx="90" cy="90" r="82" fill="none" stroke="#3a3520" stroke-width="1"/>
+          <circle cx="90" cy="90" r="78" fill="none" stroke="#4a4522" stroke-width="0.5"/>
+          <g stroke="#c9a84c" stroke-width="1" opacity="0.5">
+            <line x1="90" y1="8"  x2="90" y2="16"/>
+            <line x1="90" y1="164" x2="90" y2="172"/>
+            <line x1="8"  y1="90" x2="16" y2="90"/>
+            <line x1="164" y1="90" x2="172" y2="90"/>
+            <line x1="32" y1="32" x2="38" y2="38"/>
+            <line x1="142" y1="32" x2="148" y2="38"/>
+            <line x1="32" y1="148" x2="38" y2="142"/>
+            <line x1="142" y1="148" x2="148" y2="142"/>
+          </g>
+          <g fill="#c9a84c" opacity="0.6">
+            <polygon points="90,5 93,9 90,13 87,9"/>
+            <polygon points="90,167 93,171 90,175 87,171"/>
+            <polygon points="5,90 9,93 13,90 9,87"/>
+            <polygon points="167,90 171,93 175,90 171,87"/>
+          </g>
+        </g>
+        <polygon points="90,22 148,56 148,124 90,158 32,124 32,56" fill="none" stroke="#4a4522" stroke-width="1"/>
+        <polygon points="90,38 134,63 134,117 90,142 46,117 46,63" fill="rgba(20,18,9,0.8)" stroke="#6e5a28" stroke-width="1"/>
+        <g>
+          <polygon points="90,52 116,75 116,105 90,128 64,105 64,75" fill="rgba(74,122,155,0.08)" stroke="#2a4a60" stroke-width="0.5"/>
+          <polygon points="90,52 116,75 90,90" fill="rgba(74,122,155,0.15)" stroke="#4a7a9b" stroke-width="0.5"/>
+          <polygon points="116,75 116,105 90,90" fill="rgba(74,122,155,0.1)" stroke="#4a7a9b" stroke-width="0.5"/>
+          <polygon points="116,105 90,128 90,90" fill="rgba(74,122,155,0.12)" stroke="#4a7a9b" stroke-width="0.5"/>
+          <polygon points="90,128 64,105 90,90" fill="rgba(74,122,155,0.08)" stroke="#4a7a9b" stroke-width="0.5"/>
+          <polygon points="64,105 64,75 90,90" fill="rgba(74,122,155,0.13)" stroke="#4a7a9b" stroke-width="0.5"/>
+          <polygon points="64,75 90,52 90,90" fill="rgba(74,122,155,0.18)" stroke="#4a7a9b" stroke-width="0.5"/>
+          <polygon points="90,52 104,68 90,72 76,68" fill="rgba(200,220,240,0.12)" stroke="none"/>
+        </g>
+        <g stroke="#c9a84c" stroke-width="0.75" opacity="0.4">
+          <line x1="90" y1="38" x2="90" y2="52"/>
+          <line x1="134" y1="63" x2="116" y2="75"/>
+          <line x1="134" y1="117" x2="116" y2="105"/>
+          <line x1="90" y1="142" x2="90" y2="128"/>
+          <line x1="46" y1="117" x2="64" y2="105"/>
+          <line x1="46" y1="63" x2="64" y2="75"/>
+        </g>
+        <g fill="#c9a84c" opacity="0.5">
+          <polygon points="90,34 93,38 90,42 87,38"/>
+          <polygon points="90,138 93,142 90,146 87,142"/>
+          <polygon points="44,61 48,63 46,67 42,65"/>
+          <polygon points="136,61 138,65 134,67 132,63"/>
+          <polygon points="44,119 42,115 46,113 48,117"/>
+          <polygon points="136,119 132,117 134,113 138,115"/>
+        </g>
+        <circle cx="90" cy="90" r="3" fill="#c9a84c" opacity="0.8"/>
+        <circle cx="90" cy="90" r="5" fill="none" stroke="#c9a84c" stroke-width="0.5" opacity="0.4"/>
+      </svg>
+    </div>
 
-    <section class="latest-entry">
-      <div class="section-inner">
-        <h2 class="section-heading">Latest Entry</h2>
-        <div class="entry-card featured">
-          <div class="entry-meta">
-            <span class="entry-tag">Field Journal</span>
-            <span class="entry-divider">·</span>
-            <span class="entry-date">First day inside the pyramid</span>
-          </div>
-          <h3 class="entry-title">Entry I: The Black Crystal Pyramid</h3>
-          <p class="entry-excerpt">Lord Klaude gave Tedronai a gem. A gem of true teleportation, he called it — three uses, three locations, three pieces of some relic that will apparently end the siege on Port Town. Tedronai, in his infinite practicality, handed it directly to the party and sent us on our way with what I can only describe as "basic instructions."</p>
-          <a href="journal.html" class="entry-read-more">Continue Reading →</a>
-        </div>
-      </div>
-    </section>
+    <p class="hero-eyebrow">Port Town · Currently Under Siege</p>
+    <h1 class="hero-title">The Port Town<br>Chronicles</h1>
+    <p class="hero-subtitle">A Record of the Guild — Compiled in Service &amp; in Blood</p>
+    <div class="hero-divider"><span>✦ ✦ ✦</span></div>
+    <p class="hero-lore">These are the records of those who answered when the city called — soldiers, wanderers, thieves, and worse. What follows is neither legend nor propaganda. It is what happened, set down as faithfully as memory and ink allow.</p>
+    <p class="hero-scroll">▾ &nbsp; Enter &nbsp; ▾</p>
 
-    <section class="party-preview">
-      <div class="section-inner">
-        <h2 class="section-heading">The Party</h2>
-        <div class="party-grid">
-          <div class="party-card">
-            <div class="party-initial">S</div>
-            <div class="party-info">
-              <p class="party-name">Stilgar</p>
-              <p class="party-class">Myrmidon</p>
-            </div>
-          </div>
-          <div class="party-card">
-            <div class="party-initial">R</div>
-            <div class="party-info">
-              <p class="party-name">Rancor</p>
-              <p class="party-class">Barbarian</p>
-            </div>
-          </div>
-          <div class="party-card">
-            <div class="party-initial">J</div>
-            <div class="party-info">
-              <p class="party-name">Juniper</p>
-              <p class="party-class">Druid</p>
-            </div>
-          </div>
-          <div class="party-card">
-            <div class="party-initial">P</div>
-            <div class="party-info">
-              <p class="party-name">Pyril</p>
-              <p class="party-class">Cleric</p>
-            </div>
-          </div>
-          <div class="party-card">
-            <div class="party-initial">K</div>
-            <div class="party-info">
-              <p class="party-name">Keyo</p>
-              <p class="party-class">Monk</p>
-            </div>
-          </div>
-          <div class="party-card provisional">
-            <div class="party-initial">Sl</div>
-            <div class="party-info">
-              <p class="party-name">Slip</p>
-              <p class="party-class">Rogue <span class="provisional-tag">Provisional</span></p>
-            </div>
-          </div>
-        </div>
-        <a href="roster.html" class="section-link">View Full Roster →</a>
-      </div>
-    </section>
+  </section>
 
-    <section class="lore-preview">
-      <div class="section-inner">
-        <h2 class="section-heading">From the Wiki</h2>
-        <div class="lore-grid">
-          <a href="lore.html" class="lore-card">
-            <p class="lore-card-label">Location</p>
-            <p class="lore-card-title">Port Town</p>
-            <p class="lore-card-body">A port city currently under siege. Home to the guild and the seat of Lord Klaude's authority.</p>
-          </a>
-          <a href="lore.html" class="lore-card">
-            <p class="lore-card-label">Location</p>
-            <p class="lore-card-title">The Black Crystal Pyramid</p>
-            <p class="lore-card-body">A volcanic structure of obsidian-like crystal. Purpose and origin unknown. Contains a piece of the relic.</p>
-          </a>
-          <a href="lore.html" class="lore-card">
-            <p class="lore-card-label">Item</p>
-            <p class="lore-card-title">The Eternal Kindling</p>
-            <p class="lore-card-body">Sticks recovered from the pyramid's first level. Flame burns real but the wood does not char.</p>
-          </a>
-        </div>
-      </div>
-    </section>
+  <div class="sections">
+    <p class="sections-eyebrow">Navigate the Chronicles</p>
+    <div class="cards-grid">
 
-  </main>
+      <a href="guild.html" class="card card--guild">
+        <p class="card-number">Section I</p>
+        <span class="card-icon">⚔️</span>
+        <h2 class="card-title">The Guild</h2>
+        <p class="card-desc">The men and women who operate under Tedronai's banner in Port Town. Their histories, capabilities, and standing — from founding members to those still earning trust.</p>
+        <p class="card-arrow">Meet the Party →</p>
+      </a>
+
+      <a href="journal.html" class="card card--journal">
+        <p class="card-number">Section II</p>
+        <span class="card-icon">📖</span>
+        <h2 class="card-title">Stilgar's Journal</h2>
+        <p class="card-desc">Field notes kept in service to Tedronai. A record of where the party has gone, what it has faced, and who has proven worthy of trust. One entry per session.</p>
+        <p class="card-arrow">Read the Entries →</p>
+      </a>
+
+      <a href="tools.html" class="card card--tools">
+        <p class="card-number">Section III</p>
+        <span class="card-icon">🗂️</span>
+        <h2 class="card-title">Tools &amp; Resources</h2>
+        <p class="card-desc">Character sheets, custom campaign documents, reference tables, and homebrew rules. Everything the party needs at the table, in one place.</p>
+        <p class="card-arrow">Browse Resources →</p>
+      </a>
+
+    </div>
+  </div>
 
   <footer class="site-footer">
-    <div class="footer-inner">
-      <p class="footer-guild">[ Guild Name Pending ]</p>
-      <p class="footer-tagline">Port Town · The Guild · Est. in blood and better judgment</p>
-      <p class="footer-note">A living record. Updated after every session.</p>
-    </div>
+    <p class="footer-emblem">✦</p>
+    <p class="footer-guild">[ Guild Name Pending ]</p>
+    <p class="footer-tagline">Port Town · Est. in blood and better judgment</p>
+    <p class="footer-note">A living record — updated after every session</p>
   </footer>
 
 </body>
