@@ -11,121 +11,102 @@
   <style>
     .roster-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.25rem;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.5rem;
     }
-
     .r-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      padding: 1.5rem;
+      padding: 1.75rem;
       transition: border-color 0.2s, background 0.2s;
       position: relative;
       overflow: hidden;
     }
-
     .r-card::before {
       content: '';
       position: absolute;
       top: 0; left: 0;
       width: 3px; height: 100%;
     }
-
-    .r-card:hover {
-      border-color: var(--border-light);
-      background: var(--surface-2);
-    }
-
-    /* Standing colors */
-    .r-card.standing-member::before   { background: var(--gold-dim); }
-    .r-card.standing-employer::before { background: #c97a2a; }
-    .r-card.standing-associate::before{ background: var(--crystal-dim); }
-    .r-card.standing-provisional::before { background: var(--ember-dim); }
-    .r-card.standing-notable::before  { background: #6a7a3a; }
-
+    .r-card:hover { border-color: var(--border-light); background: var(--surface-2); }
+    .r-card.standing-member::before     { background: var(--gold-dim); }
+    .r-card.standing-associate::before  { background: var(--crystal-dim); }
+    .r-card.standing-provisional::before{ background: var(--ember-dim); }
     .r-card-header {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      margin-bottom: 0.75rem;
-      padding-bottom: 0.75rem;
+      gap: 1.25rem;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
       border-bottom: 1px solid var(--border);
     }
-
     .r-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 72px; height: 72px;
+      border-radius: 3px;
+      display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
       background: var(--surface-3);
       border: 1px solid var(--border-light);
+      position: relative;
     }
-
-    .r-icon svg { width: 26px; height: 26px; }
-
+    .r-icon::after {
+      content: '';
+      position: absolute;
+      inset: 3px;
+      border: 1px solid var(--border);
+      border-radius: 1px;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+    .r-icon svg { width: 46px; height: 46px; }
     .r-header-text { flex: 1; min-width: 0; }
-
     .r-standing {
       font-family: var(--font-heading);
-      font-size: 0.6rem;
+      font-size: 0.65rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       display: block;
-      margin-bottom: 0.15rem;
+      margin-bottom: 0.2rem;
     }
-
-    .standing-member   .r-standing { color: var(--gold-dim); }
-    .standing-employer .r-standing { color: #c97a2a; }
+    .standing-member    .r-standing { color: var(--gold-dim); }
     .standing-associate .r-standing { color: var(--crystal); }
     .standing-provisional .r-standing { color: var(--ember); }
-    .standing-notable  .r-standing { color: #8a9a5a; }
-
     .r-name {
       font-family: var(--font-display);
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       font-weight: 700;
       line-height: 1.1;
       display: block;
+      margin-bottom: 0.2rem;
     }
-
-    .standing-member   .r-name { color: var(--gold-light); }
-    .standing-employer .r-name { color: #e8a860; }
+    .standing-member    .r-name { color: var(--gold-light); }
     .standing-associate .r-name { color: #8abbe8; }
     .standing-provisional .r-name { color: #d4834a; }
-    .standing-notable  .r-name { color: #b8c870; }
-
     .r-class {
       font-family: var(--font-heading);
-      font-size: 0.65rem;
+      font-size: 0.68rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--text-muted);
-      margin-top: 0.15rem;
       display: block;
     }
-
     .r-body {
       font-family: var(--font-body);
       font-style: italic;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: var(--text-secondary);
-      line-height: 1.75;
+      line-height: 1.8;
     }
-
     .roster-section-label {
       font-family: var(--font-heading);
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--text-muted);
       padding-bottom: 0.5rem;
       border-bottom: 1px solid var(--border);
-      margin: 2rem 0 1.25rem;
+      margin: 2.5rem 0 1.5rem;
     }
-
     .roster-section-label:first-child { margin-top: 0; }
   </style>
 </head>
@@ -146,26 +127,26 @@
 
   <main class="page-main">
     <header class="page-header">
-      <p class="page-eyebrow">Port Town · Operating under Tedronai's Banner</p>
+      <p class="page-eyebrow">Port Town · Active Roster</p>
       <h1 class="page-title">The Guild</h1>
       <p class="page-desc">Those who answer when the city calls. A record of the men and women who operate under the guild's banner — their roles, their histories, and their standing.</p>
     </header>
 
     <div class="page-content">
-
-      <p class="roster-section-label">Active Members</p>
+      <p class="roster-section-label">Guild Members</p>
       <div class="roster-grid">
 
         <!-- STILGAR -->
         <div class="r-card standing-member">
           <div class="r-card-header">
             <div class="r-icon">
-              <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <line x1="5" y1="21" x2="21" y2="5" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
-                <line x1="5" y1="5" x2="21" y2="21" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
-                <circle cx="13" cy="13" r="3" fill="none" stroke="#c9a84c" stroke-width="1.2" opacity="0.6"/>
-                <polygon points="13,2 14.2,5.5 13,4.5 11.8,5.5" fill="#c9a84c" opacity="0.7"/>
-                <polygon points="13,24 14.2,20.5 13,21.5 11.8,20.5" fill="#c9a84c" opacity="0.7"/>
+              <svg viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23,6 L36,11 L36,24 C36,32 23,40 23,40 C23,40 10,32 10,24 L10,11 Z" fill="rgba(201,168,76,0.06)" stroke="#c9a84c" stroke-width="1.2" stroke-linejoin="round"/>
+                <line x1="12" y1="12" x2="34" y2="34" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+                <line x1="34" y1="12" x2="12" y2="34" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+                <line x1="9"  y1="18" x2="15" y2="18" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+                <line x1="31" y1="18" x2="37" y2="18" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+                <polygon points="23,19 25,23 23,27 21,23" fill="#c9a84c" opacity="0.7"/>
               </svg>
             </div>
             <div class="r-header-text">
@@ -174,21 +155,52 @@
               <span class="r-class">Human Myrmidon · Neutral Good</span>
             </div>
           </div>
-          <p class="r-body">Field commander and record-keeper for Tedronai's operations. The guild's longest-serving operative and a reluctant leader by appointment — just as comfortable as one blade among many. Manages Tedronai's holdings in Port Town when not in the field. Has seen enough to be surprised by very little.</p>
+          <p class="r-body">Field commander and record-keeper. The guild's longest-serving operative and a reluctant leader by appointment — just as comfortable as one blade among many. Manages holdings in a separate village on Tedronai's behalf when not in the field. Has seen enough to be surprised by very little.</p>
+        </div>
+
+        <!-- TEDRONAI -->
+        <div class="r-card standing-member">
+          <div class="r-card-header">
+            <div class="r-icon">
+              <svg viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="23" y1="8" x2="23" y2="42" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+                <path d="M23,14 C28,14 32,18 32,23 C32,30 26,34 20,32 C14,30 12,24 15,19 C18,14 25,13 30,17" stroke="#c9a84c" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+                <circle cx="32" cy="23" r="1.5" fill="#c9a84c" opacity="0.7"/>
+                <circle cx="15" cy="19" r="1.2" fill="#c9a84c" opacity="0.5"/>
+                <circle cx="20" cy="32" r="1.2" fill="#c9a84c" opacity="0.5"/>
+                <circle cx="23" cy="8" r="3.5" fill="rgba(201,168,76,0.15)" stroke="#c9a84c" stroke-width="1.3"/>
+                <circle cx="23" cy="8" r="1.5" fill="#c9a84c" opacity="0.6"/>
+                <line x1="34" y1="10" x2="36" y2="8"  stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+                <line x1="36" y1="12" x2="39" y2="12" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+                <line x1="12" y1="10" x2="9"  y2="8"  stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+                <line x1="10" y1="13" x2="7"  y2="14" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+              </svg>
+            </div>
+            <div class="r-header-text">
+              <span class="r-standing">Guild Member</span>
+              <span class="r-name">Tedronai</span>
+              <span class="r-class">Human Mage · Chaotic Good</span>
+            </div>
+          </div>
+          <p class="r-body">The guild's treasurer and strategic mind. Methodical, observant, and considerably more capable in a fight than he appears. Prefers to direct from the rear and intervene with precision when needed. Owns a galleon and employs a personal scribe. His true nature is known to few.</p>
         </div>
 
         <!-- JUNIPER -->
         <div class="r-card standing-member">
           <div class="r-card-header">
             <div class="r-icon">
-              <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13,3 C8,3 4,7 4,12 C4,17 8,21 13,22 C18,21 22,17 22,12 C22,7 18,3 13,3 Z" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
-                <line x1="13" y1="3" x2="13" y2="22" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
-                <path d="M6,9 Q13,12 20,9" stroke="#c9a84c" stroke-width="0.8" opacity="0.5" fill="none"/>
-                <path d="M5,14 Q13,17 21,14" stroke="#c9a84c" stroke-width="0.8" opacity="0.5" fill="none"/>
-                <line x1="13" y1="22" x2="13" y2="25" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
-                <line x1="13" y1="24" x2="10" y2="26" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
-                <line x1="13" y1="24" x2="16" y2="26" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+              <svg viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23,4 C23,4 8,12 8,24 C8,34 15,40 23,42 C31,40 38,34 38,24 C38,12 23,4 23,4 Z" fill="rgba(74,122,58,0.12)" stroke="#c9a84c" stroke-width="1.3"/>
+                <line x1="23" y1="4" x2="23" y2="42" stroke="#c9a84c" stroke-width="1" opacity="0.7"/>
+                <line x1="23" y1="14" x2="13" y2="22" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+                <line x1="23" y1="20" x2="11" y2="26" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+                <line x1="23" y1="26" x2="12" y2="31" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+                <line x1="23" y1="32" x2="15" y2="36" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+                <line x1="23" y1="14" x2="33" y2="22" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+                <line x1="23" y1="20" x2="35" y2="26" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+                <line x1="23" y1="26" x2="34" y2="31" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+                <line x1="23" y1="32" x2="31" y2="36" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+                <path d="M18,6 Q23,3 28,6 Q24,5 18,6 Z" fill="#c9a84c" opacity="0.4"/>
               </svg>
             </div>
             <div class="r-header-text">
@@ -204,11 +216,16 @@
         <div class="r-card standing-member">
           <div class="r-card-header">
             <div class="r-icon">
-              <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8,22 L7,6 L13,3 L19,6 L18,22" stroke="#c9a84c" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
-                <line x1="7" y1="10" x2="19" y2="10" stroke="#c9a84c" stroke-width="1" opacity="0.6"/>
-                <line x1="13" y1="3" x2="13" y2="26" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M10,24 Q13,22 16,24" stroke="#c9a84c" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+              <svg viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="23" y1="6" x2="23" y2="42" stroke="#c9a84c" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M23,10 C23,10 10,10 8,18 C8,24 14,26 23,22 Z" fill="rgba(201,168,76,0.12)" stroke="#c9a84c" stroke-width="1.3"/>
+                <path d="M23,10 C23,10 36,10 38,18 C38,24 32,26 23,22 Z" fill="rgba(201,168,76,0.12)" stroke="#c9a84c" stroke-width="1.3"/>
+                <line x1="20" y1="30" x2="26" y2="30" stroke="#c9a84c" stroke-width="1" opacity="0.5"/>
+                <line x1="20" y1="33" x2="26" y2="33" stroke="#c9a84c" stroke-width="1" opacity="0.5"/>
+                <line x1="20" y1="36" x2="26" y2="36" stroke="#c9a84c" stroke-width="1" opacity="0.5"/>
+                <circle cx="23" cy="41" r="2.5" fill="none" stroke="#c9a84c" stroke-width="1.2"/>
+                <path d="M8,18 Q11,22 10,26"  stroke="#c9a84c" stroke-width="0.8" opacity="0.4" fill="none"/>
+                <path d="M38,18 Q35,22 36,26" stroke="#c9a84c" stroke-width="0.8" opacity="0.4" fill="none"/>
               </svg>
             </div>
             <div class="r-header-text">
@@ -217,24 +234,33 @@
               <span class="r-class">Barbarian</span>
             </div>
           </div>
-          <p class="r-body">A barbarian who respects strength above ceremony. One of the party's heavies — a natural partner to Stilgar in the vanguard. Has a warrior's economy of words and a fighter's instinct for where the real danger is. Details to be added.</p>
+          <p class="r-body">A barbarian who respects strength above ceremony. One of the party's heavies and a natural partner to Stilgar in the vanguard. Has a warrior's economy of words and a fighter's instinct for where the real danger is. Details to be added.</p>
         </div>
 
         <!-- PYRIL -->
         <div class="r-card standing-member">
           <div class="r-card-header">
             <div class="r-icon">
-              <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="13" cy="13" r="7" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
-                <line x1="13" y1="2" x2="13" y2="6" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
-                <line x1="13" y1="20" x2="13" y2="24" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
-                <line x1="2" y1="13" x2="6" y2="13" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
-                <line x1="20" y1="13" x2="24" y2="13" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
-                <line x1="4.9" y1="4.9" x2="7.8" y2="7.8" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
-                <line x1="18.2" y1="18.2" x2="21.1" y2="21.1" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
-                <line x1="21.1" y1="4.9" x2="18.2" y2="7.8" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
-                <line x1="7.8" y1="18.2" x2="4.9" y2="21.1" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
-                <circle cx="13" cy="13" r="2.5" fill="#c9a84c" opacity="0.5"/>
+              <svg viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="23" cy="23" r="19" fill="none" stroke="#c9a84c" stroke-width="0.6" opacity="0.3"/>
+                <line x1="23" y1="3"  x2="23" y2="9"  stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="23" y1="37" x2="23" y2="43" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="3"  y1="23" x2="9"  y2="23" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="37" y1="23" x2="43" y2="23" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="8"  y1="8"  x2="12" y2="12" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round"/>
+                <line x1="34" y1="34" x2="38" y2="38" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round"/>
+                <line x1="38" y1="8"  x2="34" y2="12" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round"/>
+                <line x1="8"  y1="38" x2="12" y2="34" stroke="#c9a84c" stroke-width="1.2" stroke-linecap="round"/>
+                <line x1="13" y1="5"  x2="14.5" y2="8"  stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+                <line x1="33" y1="5"  x2="31.5" y2="8"  stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+                <line x1="5"  y1="13" x2="8"  y2="14.5" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+                <line x1="5"  y1="33" x2="8"  y2="31.5" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+                <line x1="41" y1="13" x2="38" y2="14.5" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+                <line x1="41" y1="33" x2="38" y2="31.5" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+                <line x1="13" y1="41" x2="14.5" y2="38" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+                <line x1="33" y1="41" x2="31.5" y2="38" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+                <circle cx="23" cy="23" r="8" fill="rgba(201,168,76,0.08)" stroke="#c9a84c" stroke-width="1.3"/>
+                <circle cx="23" cy="23" r="4" fill="#c9a84c" opacity="0.4"/>
               </svg>
             </div>
             <div class="r-header-text">
@@ -243,21 +269,90 @@
               <span class="r-class">Cleric</span>
             </div>
           </div>
-          <p class="r-body">The party's cleric and spiritual anchor. Steady under pressure, which is fortunate given the number of times the party has needed emergency intervention. Has a tendency to slide down smooth ramps into Stilgar. Details to be added.</p>
+          <p class="r-body">The party's cleric and spiritual anchor. Steady under pressure, which is fortunate given how often the party needs emergency intervention. Has a tendency to lose footing on smooth ramps and slide into Stilgar. Details to be added.</p>
+        </div>
+
+        <!-- CLEEF -->
+        <div class="r-card standing-member">
+          <div class="r-card-header">
+            <div class="r-icon">
+              <svg viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Mace handle -->
+                <line x1="23" y1="12" x2="23" y2="42" stroke="#c9a84c" stroke-width="2.2" stroke-linecap="round"/>
+                <!-- Mace head - flanged -->
+                <circle cx="23" cy="10" r="8" fill="rgba(201,168,76,0.1)" stroke="#c9a84c" stroke-width="1.3"/>
+                <!-- Flanges -->
+                <polygon points="23,2 25,7 21,7" fill="#c9a84c" opacity="0.7"/>
+                <polygon points="31,5 28,9 26,5" fill="#c9a84c" opacity="0.7"/>
+                <polygon points="32,13 27,12 30,9" fill="#c9a84c" opacity="0.7"/>
+                <polygon points="15,5 18,9 16,5" fill="#c9a84c" opacity="0.7"/>
+                <polygon points="14,13 19,12 16,9" fill="#c9a84c" opacity="0.7"/>
+                <!-- Holy symbol on head -->
+                <line x1="23" y1="6" x2="23" y2="14" stroke="#c9a84c" stroke-width="1" opacity="0.6"/>
+                <line x1="19" y1="10" x2="27" y2="10" stroke="#c9a84c" stroke-width="1" opacity="0.6"/>
+                <!-- Grip wrap -->
+                <line x1="20" y1="26" x2="26" y2="26" stroke="#c9a84c" stroke-width="1" opacity="0.5"/>
+                <line x1="20" y1="30" x2="26" y2="30" stroke="#c9a84c" stroke-width="1" opacity="0.5"/>
+                <line x1="20" y1="34" x2="26" y2="34" stroke="#c9a84c" stroke-width="1" opacity="0.5"/>
+                <!-- Pommel -->
+                <circle cx="23" cy="41" r="2.5" fill="none" stroke="#c9a84c" stroke-width="1.2"/>
+              </svg>
+            </div>
+            <div class="r-header-text">
+              <span class="r-standing">Guild Member</span>
+              <span class="r-name">Cleef</span>
+              <span class="r-class">Dwarf Cleric</span>
+            </div>
+          </div>
+          <p class="r-body">A dwarf cleric who lets his mace do most of the theological reasoning, particularly when undead are involved. Bonded with Raythe over a shared appreciation for direct, violent solutions to problems. His admiration for the ranger's propensity for sword violence is mutual and well-documented.</p>
+        </div>
+
+        <!-- DESTINY -->
+        <div class="r-card standing-member">
+          <div class="r-card-header">
+            <div class="r-icon">
+              <svg viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Large radiant cross -->
+                <line x1="23" y1="4"  x2="23" y2="42" stroke="#c9a84c" stroke-width="2.2" stroke-linecap="round"/>
+                <line x1="4"  y1="18" x2="42" y2="18" stroke="#c9a84c" stroke-width="2.2" stroke-linecap="round"/>
+                <!-- Glow rings -->
+                <circle cx="23" cy="18" r="6"  fill="rgba(201,168,76,0.12)" stroke="#c9a84c" stroke-width="1"/>
+                <circle cx="23" cy="18" r="10" fill="none" stroke="#c9a84c" stroke-width="0.6" opacity="0.4"/>
+                <!-- Banishing rays outward -->
+                <line x1="23" y1="4"  x2="19" y2="8"  stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+                <line x1="23" y1="4"  x2="27" y2="8"  stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+                <line x1="42" y1="18" x2="38" y2="14" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+                <line x1="42" y1="18" x2="38" y2="22" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+                <line x1="4"  y1="18" x2="8"  y2="14" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+                <line x1="4"  y1="18" x2="8"  y2="22" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+                <!-- Center gem -->
+                <circle cx="23" cy="18" r="3" fill="#c9a84c" opacity="0.6"/>
+                <!-- Shield base -->
+                <path d="M14,28 L14,36 C14,40 23,43 23,43 C23,43 32,40 32,36 L32,28 Z" fill="rgba(201,168,76,0.08)" stroke="#c9a84c" stroke-width="1.2" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="r-header-text">
+              <span class="r-standing">Guild Member</span>
+              <span class="r-name">Destiny</span>
+              <span class="r-class">Cleric</span>
+            </div>
+          </div>
+          <p class="r-body">A burly cleric of considerable presence. Has banished undead in fashion that left the party briefly silent before erupting into approval. When Destiny turns the dead, they stay turned. Details to be added.</p>
         </div>
 
         <!-- KEYO -->
         <div class="r-card standing-member">
           <div class="r-card-header">
             <div class="r-icon">
-              <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="13" cy="7" r="3.5" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
-                <path d="M13,10.5 L13,17" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M13,14 L9,18" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M13,14 L17,18" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M13,17 L10,22" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M13,17 L16,22" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M8,12 L13,14 L18,12" stroke="#c9a84c" stroke-width="1" fill="none" opacity="0.5"/>
+              <svg viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12,28 C12,36 16,42 23,42 C30,42 34,36 34,28 L34,20 C34,18 32,17 30,18 L30,14 C30,12 28,11 26,12 L26,10 C26,8 24,7 22,8 L22,12 C20,11 18,12 18,14 L18,18 C16,17 14,18 14,20 Z" fill="rgba(201,168,76,0.08)" stroke="#c9a84c" stroke-width="1.3" stroke-linejoin="round"/>
+                <line x1="22" y1="8"  x2="22" y2="28" stroke="#c9a84c" stroke-width="0.7" opacity="0.4"/>
+                <line x1="26" y1="10" x2="26" y2="28" stroke="#c9a84c" stroke-width="0.7" opacity="0.4"/>
+                <line x1="30" y1="14" x2="30" y2="28" stroke="#c9a84c" stroke-width="0.7" opacity="0.4"/>
+                <line x1="18" y1="14" x2="18" y2="28" stroke="#c9a84c" stroke-width="0.7" opacity="0.4"/>
+                <path d="M14,22 Q23,20 34,22" stroke="#c9a84c" stroke-width="0.8" fill="none" opacity="0.5"/>
+                <circle cx="23" cy="33" r="3.5" fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.7"/>
+                <circle cx="23" cy="33" r="1.5" fill="#c9a84c" opacity="0.4"/>
               </svg>
             </div>
             <div class="r-header-text">
@@ -266,19 +361,48 @@
               <span class="r-class">Monk</span>
             </div>
           </div>
-          <p class="r-body">A monk who fights without weapons and makes it look unremarkable. Demonstrated in the pyramid that shadow creatures will not attack what they do not perceive as a threat — a lesson that may yet prove useful. Calm in situations that unsettle everyone else. Details to be added.</p>
+          <p class="r-body">A monk who fights without weapons and makes it look unremarkable. Demonstrated in the pyramid that shadow creatures will not attack what they do not perceive as a threat. Calm in situations that unsettle everyone else. Details to be added.</p>
+        </div>
+
+        <!-- PHAEDRA -->
+        <div class="r-card standing-member">
+          <div class="r-card-header">
+            <div class="r-icon">
+              <svg viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Spear shaft -->
+                <line x1="23" y1="6" x2="23" y2="42" stroke="#c9a84c" stroke-width="2" stroke-linecap="round"/>
+                <!-- Spear head -->
+                <path d="M23,6 L18,18 L23,15 L28,18 Z" fill="rgba(201,168,76,0.2)" stroke="#c9a84c" stroke-width="1.3" stroke-linejoin="round"/>
+                <!-- Amazon circle / female symbol -->
+                <circle cx="23" cy="28" r="7" fill="none" stroke="#c9a84c" stroke-width="1.3"/>
+                <line x1="23" y1="35" x2="23" y2="40" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/>
+                <line x1="19" y1="38" x2="27" y2="38" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/>
+                <!-- Star inside circle -->
+                <path d="M23,22 L24.5,26.5 L29,26.5 L25.5,29 L27,33.5 L23,31 L19,33.5 L20.5,29 L17,26.5 L21.5,26.5 Z" fill="#c9a84c" opacity="0.3" stroke="#c9a84c" stroke-width="0.5"/>
+              </svg>
+            </div>
+            <div class="r-header-text">
+              <span class="r-standing">Guild Member</span>
+              <span class="r-name">Phaedra</span>
+              <span class="r-class">Amazon</span>
+            </div>
+          </div>
+          <p class="r-body">An Amazon of considerable physical presence. Brings both power and discipline to the party's front line. Details to be added.</p>
         </div>
 
         <!-- DIANA -->
         <div class="r-card standing-member">
           <div class="r-card-header">
             <div class="r-icon">
-              <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5,21 Q5,5 21,5" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
-                <line x1="5" y1="21" x2="21" y2="5" stroke="#c9a84c" stroke-width="1" opacity="0.4"/>
-                <line x1="13" y1="2" x2="13" y2="24" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
-                <polygon points="13,2 15,7 13,6 11,7" fill="#c9a84c"/>
-                <line x1="9" y1="13" x2="17" y2="13" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+              <svg viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14,5 C8,14 8,32 14,41" stroke="#c9a84c" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <line x1="14" y1="5" x2="14" y2="41" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+                <line x1="14" y1="23" x2="38" y2="23" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round"/>
+                <polygon points="38,23 33,20 33,26" fill="#c9a84c"/>
+                <path d="M16,23 L14,19 L18,21" stroke="#c9a84c" stroke-width="0.8" fill="none" opacity="0.7"/>
+                <path d="M16,23 L14,27 L18,25" stroke="#c9a84c" stroke-width="0.8" fill="none" opacity="0.7"/>
+                <circle cx="14" cy="5"  r="1.5" fill="#c9a84c" opacity="0.6"/>
+                <circle cx="14" cy="41" r="1.5" fill="#c9a84c" opacity="0.6"/>
               </svg>
             </div>
             <div class="r-header-text">
@@ -287,19 +411,27 @@
               <span class="r-class">Ranger</span>
             </div>
           </div>
-          <p class="r-body">A ranger and regular member of the party. Missed the pyramid expedition after a character sheet went missing — replaced on short notice by a wizard who shall not be forgotten. Details to be added.</p>
+          <p class="r-body">A ranger and regular member of the party. Missed the pyramid expedition after a character sheet went missing — replaced on short notice by a wizard whose contributions were memorable if not entirely helpful. Details to be added.</p>
         </div>
 
         <!-- RAYTHE -->
         <div class="r-card standing-member">
           <div class="r-card-header">
             <div class="r-icon">
-              <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4,22 C4,22 8,16 13,14 C18,12 22,4 22,4" stroke="#c9a84c" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-                <circle cx="8" cy="9" r="4" fill="none" stroke="#c9a84c" stroke-width="1.2" opacity="0.7"/>
-                <circle cx="8" cy="9" r="1.5" fill="#c9a84c" opacity="0.5"/>
-                <line x1="8" y1="5" x2="8" y2="2" stroke="#c9a84c" stroke-width="1" opacity="0.5" stroke-linecap="round"/>
-                <line x1="11.8" y1="6.2" x2="14" y2="4" stroke="#c9a84c" stroke-width="1" opacity="0.5" stroke-linecap="round"/>
+              <svg viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10,30 C10,30 8,22 10,16 C12,10 18,7 23,7 C28,7 34,10 36,16 C38,22 36,30 36,30" stroke="#c9a84c" stroke-width="1.3" fill="rgba(201,168,76,0.06)" stroke-linejoin="round"/>
+                <path d="M14,12 L12,5 L19,10" stroke="#c9a84c" stroke-width="1.2" fill="rgba(201,168,76,0.1)" stroke-linejoin="round"/>
+                <path d="M32,12 L34,5 L27,10" stroke="#c9a84c" stroke-width="1.2" fill="rgba(201,168,76,0.1)" stroke-linejoin="round"/>
+                <circle cx="18" cy="18" r="2.5" fill="none" stroke="#c9a84c" stroke-width="1.2"/>
+                <circle cx="28" cy="18" r="2.5" fill="none" stroke="#c9a84c" stroke-width="1.2"/>
+                <circle cx="18" cy="18" r="1" fill="#c9a84c" opacity="0.6"/>
+                <circle cx="28" cy="18" r="1" fill="#c9a84c" opacity="0.6"/>
+                <path d="M18,24 Q23,27 28,24" stroke="#c9a84c" stroke-width="1" fill="none" opacity="0.6"/>
+                <path d="M21,24 L23,26 L25,24" stroke="#c9a84c" stroke-width="0.8" fill="none"/>
+                <line x1="15" y1="32" x2="20" y2="43" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+                <line x1="31" y1="32" x2="26" y2="43" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+                <polygon points="20,43 18,39 22,39" fill="#c9a84c" opacity="0.7"/>
+                <polygon points="26,43 24,39 28,39" fill="#c9a84c" opacity="0.7"/>
               </svg>
             </div>
             <div class="r-header-text">
@@ -308,57 +440,76 @@
               <span class="r-class">Elf Ranger · Neutral Good</span>
             </div>
           </div>
-          <p class="r-body">One of the guild's founding members and its original scout. An elven ranger who moves through the wilds like he belongs there — because he does. Fights with two blades simultaneously and holds a fierce, personal hatred of Ogres. Accompanied by Fenris, a war dog who has earned his place at the party's side.</p>
+          <p class="r-body">One of the guild's founding members and its original scout. An elven ranger who moves through the wilds like he belongs there. Fights with two blades simultaneously and holds a fierce, personal hatred of Ogres. Bonded with Cleef over a shared appreciation for direct violence as a problem-solving method. Accompanied by Fenris, a war dog.</p>
         </div>
 
-      </div>
-
-      <!-- LEADERSHIP -->
-      <p class="roster-section-label">Leadership</p>
-      <div class="roster-grid">
-
-        <!-- TEDRONAI -->
-        <div class="r-card standing-employer">
+        <!-- LELANI -->
+        <div class="r-card standing-member">
           <div class="r-card-header">
             <div class="r-icon">
-              <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13,3 C13,3 10,8 7,10 C9,10 11,11 13,14 C15,11 17,10 19,10 C16,8 13,3 13,3 Z" fill="none" stroke="#c97a2a" stroke-width="1.3"/>
-                <circle cx="13" cy="14" r="2" fill="#c97a2a" opacity="0.5"/>
-                <path d="M6,16 Q13,13 20,16" stroke="#c97a2a" stroke-width="1" fill="none" opacity="0.5"/>
-                <path d="M5,19 Q13,15 21,19" stroke="#c97a2a" stroke-width="1" fill="none" opacity="0.4"/>
-                <line x1="13" y1="16" x2="13" y2="23" stroke="#c97a2a" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
-                <line x1="9" y1="21" x2="17" y2="21" stroke="#c97a2a" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+              <svg viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Moon circle -->
+                <circle cx="23" cy="20" r="11" fill="rgba(201,168,76,0.06)" stroke="#c9a84c" stroke-width="1.3"/>
+                <!-- Crescent within -->
+                <path d="M17,14 Q23,11 29,14 Q24,13 17,14 Z" fill="#c9a84c" opacity="0.4"/>
+                <!-- Stars around -->
+                <polygon points="23,4 24,7 27,7 25,9 26,12 23,10 20,12 21,9 19,7 22,7" fill="#c9a84c" opacity="0.5"/>
+                <polygon points="10,22 11,24 13,24 11.5,25.5 12,28 10,26.5 8,28 8.5,25.5 7,24 9,24" fill="#c9a84c" opacity="0.4"/>
+                <polygon points="36,22 37,24 39,24 37.5,25.5 38,28 36,26.5 34,28 34.5,25.5 33,24 35,24" fill="#c9a84c" opacity="0.4"/>
+                <!-- Familiar paw prints below - small crosses -->
+                <line x1="16" y1="36" x2="16" y2="40" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+                <line x1="14" y1="38" x2="18" y2="38" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+                <line x1="23" y1="36" x2="23" y2="40" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+                <line x1="21" y1="38" x2="25" y2="38" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+                <line x1="30" y1="36" x2="30" y2="40" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+                <line x1="28" y1="38" x2="32" y2="38" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+                <!-- Small X over middle paw - in memoriam -->
+                <line x1="21" y1="36" x2="25" y2="40" stroke="#c9a84c" stroke-width="0.8" opacity="0.4"/>
+                <line x1="25" y1="36" x2="21" y2="40" stroke="#c9a84c" stroke-width="0.8" opacity="0.4"/>
               </svg>
             </div>
             <div class="r-header-text">
-              <span class="r-standing">Guild Employer</span>
-              <span class="r-name">Tedronai</span>
-              <span class="r-class">Human Mage · Chaotic Good</span>
+              <span class="r-standing">Guild Member</span>
+              <span class="r-name">Lelani</span>
+              <span class="r-class">Druid</span>
             </div>
           </div>
-          <p class="r-body">The mind and money behind the guild's operations in Port Town. Methodical, observant, and considerably more capable in a fight than he appears. Prefers to direct from the rear and intervene with precision when needed. Owns a galleon and employs a personal scribe. His true nature is known to few.</p>
+          <p class="r-body">A druid with a genuine gift for the natural world and an unfortunate track record with familiars. Several companions have met heinous ends, largely due to an absence of protective equipment. The guild has quietly stopped asking about new familiars. Details to be added.</p>
         </div>
 
-        <!-- LORD KLAUDE -->
-        <div class="r-card standing-notable">
+        <!-- THALON -->
+        <div class="r-card standing-member">
           <div class="r-card-header">
             <div class="r-icon">
-              <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5,18 L5,10 L8,13 L13,7 L18,13 L21,10 L21,18 Z" fill="none" stroke="#8a9a5a" stroke-width="1.5" stroke-linejoin="round"/>
-                <line x1="5" y1="18" x2="21" y2="18" stroke="#8a9a5a" stroke-width="1.5" stroke-linecap="round"/>
-                <line x1="5" y1="21" x2="21" y2="21" stroke="#8a9a5a" stroke-width="1.5" stroke-linecap="round"/>
-                <circle cx="8" cy="13" r="1.5" fill="#8a9a5a" opacity="0.6"/>
-                <circle cx="13" cy="7" r="1.5" fill="#8a9a5a" opacity="0.6"/>
-                <circle cx="18" cy="13" r="1.5" fill="#8a9a5a" opacity="0.6"/>
+              <svg viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Longbow - more elegant -->
+                <path d="M12,4 C6,15 6,31 12,42" stroke="#c9a84c" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+                <line x1="12" y1="4" x2="12" y2="42" stroke="#c9a84c" stroke-width="0.8" opacity="0.4"/>
+                <!-- Arrow -->
+                <line x1="12" y1="23" x2="40" y2="23" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"/>
+                <!-- Arrowhead - detailed -->
+                <polygon points="40,23 34,20 35,23 34,26" fill="#c9a84c"/>
+                <!-- Fletching - three feathers -->
+                <path d="M15,23 L12,17 L17,20" stroke="#c9a84c" stroke-width="1" fill="rgba(201,168,76,0.2)" stroke-linejoin="round"/>
+                <path d="M15,23 L12,29 L17,26" stroke="#c9a84c" stroke-width="1" fill="rgba(201,168,76,0.2)" stroke-linejoin="round"/>
+                <!-- Sight line / scope marks -->
+                <line x1="30" y1="18" x2="30" y2="20" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+                <line x1="35" y1="18" x2="35" y2="20" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+                <!-- Bow tips -->
+                <circle cx="12" cy="4"  r="2" fill="#c9a84c" opacity="0.6"/>
+                <circle cx="12" cy="42" r="2" fill="#c9a84c" opacity="0.6"/>
+                <!-- Target rings in distance -->
+                <circle cx="42" cy="23" r="3"   fill="none" stroke="#c9a84c" stroke-width="0.7" opacity="0.35"/>
+                <circle cx="42" cy="23" r="5.5" fill="none" stroke="#c9a84c" stroke-width="0.5" opacity="0.2"/>
               </svg>
             </div>
             <div class="r-header-text">
-              <span class="r-standing">Lord of Port Town</span>
-              <span class="r-name">Lord Klaude</span>
-              <span class="r-class">Notable Figure</span>
+              <span class="r-standing">Guild Member</span>
+              <span class="r-name">Thalon</span>
+              <span class="r-class">Scout</span>
             </div>
           </div>
-          <p class="r-body">Lord of Port Town and a figure of formidable power and long history. It was Klaude who tasked Tedronai with retrieving the relic needed to end the siege, providing the gem of true teleportation to make the mission possible. His full history is its own chronicle.</p>
+          <p class="r-body">A scout who joins the party from time to time and serves as the guild's resident marksman. With a bow in hand, Thalon is as reliable at distance as anyone the guild has fielded. Details to be added.</p>
         </div>
 
       </div>
@@ -371,14 +522,16 @@
         <div class="r-card standing-associate">
           <div class="r-card-header">
             <div class="r-icon">
-              <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <ellipse cx="13" cy="16" rx="5" ry="7" fill="none" stroke="#4a7a9b" stroke-width="1.5"/>
-                <ellipse cx="13" cy="8" rx="3" ry="3.5" fill="none" stroke="#4a7a9b" stroke-width="1.3"/>
-                <line x1="10" y1="8" x2="8" y2="4" stroke="#4a7a9b" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
-                <line x1="16" y1="8" x2="18" y2="4" stroke="#4a7a9b" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
-                <circle cx="11" cy="17" r="1" fill="#4a7a9b" opacity="0.5"/>
-                <circle cx="15" cy="14" r="0.8" fill="#4a7a9b" opacity="0.4"/>
-                <circle cx="13" cy="19" r="0.8" fill="#4a7a9b" opacity="0.4"/>
+              <svg viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18,18 L13,30 C11,36 14,42 23,42 C32,42 35,36 33,30 L28,18 Z" fill="rgba(74,122,155,0.1)" stroke="#4a7a9b" stroke-width="1.5" stroke-linejoin="round"/>
+                <rect x="18" y="6" width="10" height="12" rx="1" fill="rgba(74,122,155,0.08)" stroke="#4a7a9b" stroke-width="1.3"/>
+                <rect x="20" y="4" width="6" height="4" rx="1" fill="rgba(74,122,155,0.15)" stroke="#4a7a9b" stroke-width="1.2"/>
+                <circle cx="19" cy="32" r="2.5" fill="none" stroke="#4a7a9b" stroke-width="1" opacity="0.7"/>
+                <circle cx="27" cy="36" r="2"   fill="none" stroke="#4a7a9b" stroke-width="1" opacity="0.6"/>
+                <circle cx="23" cy="28" r="1.5" fill="none" stroke="#4a7a9b" stroke-width="0.8" opacity="0.5"/>
+                <circle cx="17" cy="38" r="1.2" fill="#4a7a9b" opacity="0.3"/>
+                <circle cx="29" cy="29" r="1"   fill="#4a7a9b" opacity="0.3"/>
+                <path d="M14,33 Q23,30 32,33" stroke="#4a7a9b" stroke-width="0.8" fill="none" opacity="0.5"/>
               </svg>
             </div>
             <div class="r-header-text">
@@ -396,14 +549,52 @@
       <p class="roster-section-label">Provisional</p>
       <div class="roster-grid">
 
+        <!-- DEMRIC -->
+        <div class="r-card standing-provisional">
+          <div class="r-card-header">
+            <div class="r-icon">
+              <svg viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Dagger - cursed looking, slightly crooked -->
+                <path d="M24,4 L28,16 L25,15 L25,30 L23,32 L21,30 L21,15 L18,16 Z" fill="rgba(184,92,42,0.12)" stroke="#b85c2a" stroke-width="1.3" stroke-linejoin="round"/>
+                <!-- Guard -->
+                <path d="M16,16 L30,16 L29,19 L17,19 Z" fill="rgba(184,92,42,0.15)" stroke="#b85c2a" stroke-width="1.2" stroke-linejoin="round"/>
+                <!-- Handle -->
+                <rect x="20" y="19" width="6" height="13" rx="1" fill="rgba(184,92,42,0.1)" stroke="#b85c2a" stroke-width="1.2"/>
+                <!-- Cursed rune on blade -->
+                <path d="M21,8 L25,12 M25,8 L21,12" stroke="#b85c2a" stroke-width="0.8" opacity="0.6"/>
+                <!-- Zero damage indicator - small 0 -->
+                <circle cx="35" cy="10" r="4" fill="none" stroke="#b85c2a" stroke-width="1" opacity="0.6"/>
+                <text x="33" y="13" font-size="5" fill="#b85c2a" opacity="0.7" font-family="serif">0</text>
+                <!-- Deck of many things - diamond card -->
+                <path d="M8,34 L13,28 L18,34 L13,40 Z" fill="rgba(184,92,42,0.1)" stroke="#b85c2a" stroke-width="1" stroke-linejoin="round"/>
+                <text x="11" y="36" font-size="5" fill="#b85c2a" opacity="0.6" font-family="serif">?</text>
+                <!-- Lucky star -->
+                <polygon points="37,32 38.5,36 42,36 39.5,38.5 40.5,42 37,40 33.5,42 34.5,38.5 32,36 35.5,36" fill="none" stroke="#b85c2a" stroke-width="0.8" opacity="0.5"/>
+              </svg>
+            </div>
+            <div class="r-header-text">
+              <span class="r-standing">Provisional</span>
+              <span class="r-name">Demric</span>
+              <span class="r-class">Human Rogue</span>
+            </div>
+          </div>
+          <p class="r-body">A rogue of extraordinary and inexplicable luck. Has critically hit a monster for zero damage due to a cursed sword. Has drawn from the Deck of Many Things on multiple occasions with results that have ranged from catastrophic to transformative — including a charisma elevation that saved him from permanent social exile. Somehow still here. Possibly the guild's greatest liability and most entertaining member simultaneously.</p>
+        </div>
+
         <!-- SLIP -->
         <div class="r-card standing-provisional">
           <div class="r-card-header">
             <div class="r-icon">
-              <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13,3 L15,10 L22,10 L16.5,14.5 L18.5,22 L13,17.5 L7.5,22 L9.5,14.5 L4,10 L11,10 Z" fill="none" stroke="#b85c2a" stroke-width="1.3" stroke-linejoin="round" opacity="0.5"/>
-                <line x1="10" y1="4" x2="16" y2="22" stroke="#b85c2a" stroke-width="1.8" stroke-linecap="round"/>
-                <polygon points="13,2 14.5,6 13,5 11.5,6" fill="#b85c2a"/>
+              <svg viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23,4 L27,16 L25,16 L25,32 L23,34 L21,32 L21,16 L19,16 Z" fill="rgba(184,92,42,0.12)" stroke="#b85c2a" stroke-width="1.3" stroke-linejoin="round"/>
+                <path d="M16,16 L30,16 L29,19 L17,19 Z" fill="rgba(184,92,42,0.15)" stroke="#b85c2a" stroke-width="1.2" stroke-linejoin="round"/>
+                <rect x="20" y="19" width="6" height="14" rx="1" fill="rgba(184,92,42,0.1)" stroke="#b85c2a" stroke-width="1.2"/>
+                <line x1="20" y1="22" x2="26" y2="22" stroke="#b85c2a" stroke-width="0.8" opacity="0.5"/>
+                <line x1="20" y1="25" x2="26" y2="25" stroke="#b85c2a" stroke-width="0.8" opacity="0.5"/>
+                <line x1="20" y1="28" x2="26" y2="28" stroke="#b85c2a" stroke-width="0.8" opacity="0.5"/>
+                <ellipse cx="23" cy="34" rx="4" ry="2.5" fill="rgba(184,92,42,0.15)" stroke="#b85c2a" stroke-width="1.2"/>
+                <polygon points="10,36 13,32 16,36 13,40" fill="none" stroke="#b85c2a" stroke-width="0.8" opacity="0.4"/>
+                <polygon points="30,36 33,32 36,36 33,40" fill="none" stroke="#b85c2a" stroke-width="0.8" opacity="0.4"/>
               </svg>
             </div>
             <div class="r-header-text">
@@ -419,13 +610,21 @@
         <div class="r-card standing-provisional">
           <div class="r-card-header">
             <div class="r-icon">
-              <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="6" y="4" width="14" height="18" rx="1" fill="none" stroke="#b85c2a" stroke-width="1.5"/>
-                <line x1="9" y1="9" x2="17" y2="9" stroke="#b85c2a" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
-                <line x1="9" y1="12" x2="17" y2="12" stroke="#b85c2a" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
-                <line x1="9" y1="15" x2="14" y2="15" stroke="#b85c2a" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
-                <path d="M14,17 L17,17 L17,20 L14,20 Z" fill="none" stroke="#b85c2a" stroke-width="1" opacity="0.7"/>
-                <path d="M15,18 L16,19" stroke="#b85c2a" stroke-width="0.8" opacity="0.5"/>
+              <svg viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="6" y="8" width="34" height="32" rx="1" fill="rgba(184,92,42,0.08)" stroke="#b85c2a" stroke-width="1.5"/>
+                <rect x="21" y="8" width="4" height="32" fill="#b85c2a" opacity="0.2"/>
+                <line x1="10" y1="15" x2="20" y2="15" stroke="#b85c2a" stroke-width="0.8" opacity="0.5"/>
+                <line x1="10" y1="19" x2="20" y2="19" stroke="#b85c2a" stroke-width="0.8" opacity="0.5"/>
+                <line x1="10" y1="23" x2="20" y2="23" stroke="#b85c2a" stroke-width="0.8" opacity="0.5"/>
+                <line x1="10" y1="27" x2="20" y2="27" stroke="#b85c2a" stroke-width="0.8" opacity="0.5"/>
+                <line x1="10" y1="31" x2="20" y2="31" stroke="#b85c2a" stroke-width="0.8" opacity="0.5"/>
+                <line x1="25" y1="15" x2="36" y2="15" stroke="#b85c2a" stroke-width="0.8" opacity="0.5"/>
+                <line x1="25" y1="19" x2="36" y2="19" stroke="#b85c2a" stroke-width="0.8" opacity="0.5"/>
+                <line x1="25" y1="23" x2="36" y2="23" stroke="#b85c2a" stroke-width="0.8" opacity="0.5"/>
+                <line x1="25" y1="27" x2="36" y2="27" stroke="#b85c2a" stroke-width="0.8" opacity="0.5"/>
+                <line x1="25" y1="31" x2="36" y2="31" stroke="#b85c2a" stroke-width="0.8" opacity="0.5"/>
+                <path d="M32,4 L34,8 L30,7 L33,11 L29,10" stroke="#b85c2a" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+                <circle cx="32" cy="4" r="1.5" fill="#b85c2a" opacity="0.6"/>
               </svg>
             </div>
             <div class="r-header-text">
@@ -438,7 +637,6 @@
         </div>
 
       </div>
-
     </div>
   </main>
 
