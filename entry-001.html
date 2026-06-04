@@ -3,137 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Entry I: The Black Crystal Pyramid — The Freeport Chronicles</title>
+  <title>Entry I: The Black Crystal Pyramid — The Port Town Chronicles</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/shared.css" />
-  <style>
-    .journal-wrap {
-      max-width: 720px;
-      margin: 0 auto;
-    }
-
-    .journal-log {
-      font-family: var(--font-heading);
-      font-size: 0.78rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--ember);
-      margin-bottom: 0.75rem;
-    }
-
-    .journal-entry-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-      font-weight: 900;
-      color: var(--gold-light);
-      line-height: 1.15;
-      margin-bottom: 0.5rem;
-      text-shadow: 0 0 40px rgba(201,168,76,0.15);
-    }
-
-    .journal-byline {
-      font-family: var(--font-body);
-      font-style: italic;
-      font-size: 1rem;
-      color: var(--text-muted);
-      margin-bottom: 2.5rem;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .journal-body {
-      font-family: var(--font-body);
-      font-size: 1.1rem;
-      line-height: 1.9;
-      color: var(--text-primary);
-    }
-
-    .journal-body p {
-      margin-bottom: 1.4rem;
-    }
-
-    .journal-body p:first-child::first-letter {
-      font-family: var(--font-display);
-      font-size: 3.8em;
-      font-weight: 900;
-      float: left;
-      line-height: 0.78;
-      margin: 0.08em 0.1em 0 0;
-      color: var(--gold);
-    }
-
-    .scene-break {
-      text-align: center;
-      color: var(--gold-dim);
-      font-size: 0.8rem;
-      letter-spacing: 0.4em;
-      margin: 2.5rem 0;
-    }
-
-    .journal-sig {
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--border);
-      font-family: var(--font-heading);
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      color: var(--text-muted);
-      text-align: right;
-    }
-
-    .journal-back {
-      margin-top: 2.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .journal-back a {
-      font-family: var(--font-heading);
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--ember-dim);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .journal-back a:hover { color: var(--ember); }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <nav class="site-nav">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-brand">Freeport Chronicles</a>
-      <div class="nav-links">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="journal.html" class="nav-link active">Journal</a>
-        <a href="guild.html" class="nav-link">The Guild</a>
-        <a href="tools.html" class="nav-link">Tools</a>
-        <a href="vault.html" class="nav-link">The Vault</a>
-        <a href="lore.html" class="nav-link">Lore</a>
+  <div class="noise-overlay"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="site-brand">
+        <div class="brand-emblem">✦</div>
+        <div class="brand-text">
+          <h1 class="site-title">The Port Town Chronicles</h1>
+          <p class="site-subtitle">A Record of the Guild — Compiled in Service &amp; in Blood</p>
+        </div>
+        <div class="brand-emblem">✦</div>
       </div>
+      <nav class="site-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="chronicles.html" class="nav-link active">Chronicles</a>
+        <a href="roster.html" class="nav-link">Party Roster</a>
+        <a href="lore.html" class="nav-link">Lore &amp; Wiki</a>
+        <a href="homebrew.html" class="nav-link">Homebrew Rules</a>
+        <a href="maps.html" class="nav-link">Maps</a>
+      </nav>
     </div>
-  </nav>
+  </header>
 
-  <main class="page-main">
-    <div class="journal-wrap">
+  <main class="site-main">
+    <div class="journal-page">
 
-      <p class="journal-log">Guild Record · Siege Day Unknown · First Location</p>
-      <h1 class="journal-entry-title">Entry I: The Black Crystal Pyramid</h1>
-      <p class="journal-byline">Written the evening after — while the dust is still in my lungs</p>
+      <div class="journal-page-header">
+        <p class="journal-log-line">Guild Record · Siege Day Unknown · First Location</p>
+        <h2 class="journal-page-title">Entry I: The Black Crystal Pyramid</h2>
+        <p class="journal-page-byline">Written the evening after — while the dust is still in my lungs</p>
+      </div>
 
       <div class="journal-body">
 
-        <p>Lord Klaude gave Tedronai a gem. A gem of true teleportation, he called it — three uses, three locations, three pieces of some relic that will apparently end the siege on Freeport. Tedronai, in his infinite practicality, handed it directly to the party and sent us on our way with what I can only describe as "basic instructions." I have served stranger employers. I have followed worse orders. But I will note, for the record, that none of us asked what the relic actually does.</p>
+        <p>Lord Klaude gave Tedronai a gem. A gem of true teleportation, he called it — three uses, three locations, three pieces of some relic that will apparently end the siege on Port Town. Tedronai, in his infinite practicality, handed it directly to the party and sent us on our way with what I can only describe as "basic instructions." I have served stranger employers. I have followed worse orders. But I will note, for the record, that none of us asked what the relic actually does.</p>
 
         <p>The teleportation dropped us somewhere that can only be described as a world that gave up. Hot but cheerless, the sky offering light without warmth, the ground bare and volcanic. No desert — something worse. Like the land had been burned once and never recovered the ambition to try again. In the distance: a pyramid. Black as obsidian, sharp as a broken blade, catching the dull light in ways that made it seem almost alive. We walked toward it because that is the sort of thing we do.</p>
 
         <p>The door was enormous. Rancor and I put our shoulders into it and managed to haul it open. Inside: darkness, dust, and a smooth stone ramp descending into the earth. The walls were that same black crystal, catching what little light filtered in and throwing it back in strange angles. It had the quality of a place that had not been disturbed in a very long time and was not particularly pleased to see us.</p>
 
-        <div class="scene-break">— ✦ —</div>
+        <div class="journal-scene-break">— ✦ —</div>
 
         <p>First level. Four hooded figures arranged around a fire. Slip — our new addition, a contracted thief who has made it abundantly clear she is only here for the coin — crept ahead to investigate. She returned undetected and reported what she saw: robed shapes, a fire, no obvious weapons. We debated. Someone suggested we approach diplomatically. In the end, we decided to walk up and try talking.</p>
 
@@ -143,7 +61,7 @@
 
         <p>We killed them quickly. When they fell, they crumbled to ash, leaving nothing — no coin, no gear, nothing to reward our effort beyond survival. The others noticed the fire they had been tending. Each piece of kindling burned with a steady flame, but when picked up, the fire went out — and the wood beneath was not charred. Not scorched at all. They lit one again and confirmed it: the flame is real, the heat is real, but the wood simply does not burn. I noted the detail. I have learned not to ignore things that make no sense. They usually matter later.</p>
 
-        <div class="scene-break">— ✦ —</div>
+        <div class="journal-scene-break">— ✦ —</div>
 
         <p>The ramp down grew steeper. Juniper and Pyril have been sliding. This has become the defining feature of our descent — the two of them losing their footing on the smooth stone and colliding into Rancor or myself, who must brace and catch them before the whole party becomes a human avalanche. We are soldiers and adventurers, tested against demons and worse. We are also, apparently, a handrail.</p>
 
@@ -153,7 +71,7 @@
 
         <p>His trident burned with purple flame. I found this more interesting than threatening, which may say something about the quality of my judgement. He was powerful — Pyril and the wizard both caught fire before Juniper cast quench flames to pull them back from the brink — but we brought him down. He left no loot either. Whatever this place is, it was not built for salvage.</p>
 
-        <div class="scene-break">— ✦ —</div>
+        <div class="journal-scene-break">— ✦ —</div>
 
         <p>The walls began to glow as we went deeper, giving off enough light that Slip noted sourly her shadows were gone. In the next chamber, she spotted figures drifting near the ceiling — only visible when they passed close to the crystal walls, revealed briefly by the light and then swallowed by darkness again. They moved wrong. Floating. Patient.</p>
 
@@ -163,17 +81,17 @@
 
         <p>My theory: Keyo, being a monk, carries no visible weapon. They did not perceive him as a threat and therefore found no cause to act. I keep this to myself for now. There is no point in giving Rancor ideas.</p>
 
-        <div class="scene-break">— ✦ —</div>
+        <div class="journal-scene-break">— ✦ —</div>
 
         <p>The next chamber held a statue. Enormous — a figure seated on a throne, stone hands resting on stone knees, staring at nothing with the expression common to gods and very patient predators. I took one step toward it and a chip of stone broke from its shoulder. I stepped back. The chip fell. The statue did not move.</p>
 
         <p>The wizard suggested we traverse the room without touching the floor. Juniper, bless her practical heart, cast airwalk on me. I floated across the chamber, reached the far ramp, and then went back for everyone else. Keyo. Rancor. The wizard. Pyril. Slip, who looked like she was reconsidering her contract. Juniper last. Trip by trip, back and forth, while the statue held its stillness and I held my breath. It never moved. We made it through.</p>
 
-        <div class="scene-break">— ✦ —</div>
+        <div class="journal-scene-break">— ✦ —</div>
 
         <p>The final room of the evening: scattered pillars reaching floor to ceiling, spread irregularly through a wide space. The wizard sent an unseen servant ahead to investigate. It vanished when it reached certain pillars — not passed behind them, not obscured. Gone. The wizard said he simply could not sense it anymore.</p>
 
-        <p>We crept along the right wall. Halfway through, several pillars shifted inward, narrowing our path. Slip tumbled out into the open center of the room and was hit hard by something invisible. She held her ground — alone out there — watching. I moved past a pillar myself and took the same blow. Keyo struck a pillar with a spare staff to test contact; it bounced back as though he had hit metal. Whatever was striking us was not the pillar itself.</p>
+        <p>We crept along the right wall. Halfway through, several pillars shifted inward, narrowing our path. Slip tumbled out into the open center of the room and was hit hard by something invisible. She did not fall back in line. She held her ground — alone out there — watching. I moved past a pillar myself and took the same blow. Keyo struck a pillar with a spare staff to test contact; it bounced back as though he had hit metal. Whatever was striking us was not the pillar itself.</p>
 
         <p>I called for the group to spread out and move simultaneously — if there was a single unseen force working the room, divide its attention. What happened next I can only account for partially. Keyo tumbled toward the left wall and vanished. I jumped after him using the ring and landed on the other side of a barrier I had not known was there — and found myself facing two large creatures who had been controlling the pillars like puppets. I attacked immediately. Rancor followed without hesitation. That is the best thing about Rancor. He never needs a reason explained twice.</p>
 
@@ -181,28 +99,29 @@
 
         <p>The creatures fell. They crumbled to dust, same as everything else in this place. The pillars went still.</p>
 
-        <p>We stopped there. It was late, we were battered, and the next room waited with whatever it holds. The relic piece is still ahead. Freeport still needs saving. The gem has two uses remaining.</p>
+        <p>We stopped there. It was late, we were battered, and the next room waited with whatever it holds. The relic piece is still ahead. Port Town still needs saving. The gem has two uses remaining.</p>
 
-        <p>The pyramid is not finished with us.</p>
+        <p>I have the eternal kindling in my mind if not my pack. My back still aches where Juniper landed on it. The pyramid is not finished with us.</p>
 
         <p>Tomorrow, we go deeper.</p>
 
       </div>
 
-      <div class="journal-sig">— Stilgar, Myrmidon &nbsp;·&nbsp; In service to Tedronai &nbsp;·&nbsp; Guild of Freeport —</div>
+      <div class="journal-footer-sig">— Stilgar, Myrmidon &nbsp;·&nbsp; In service to Tedronai &nbsp;·&nbsp; Guild of Port Town —</div>
 
-      <div class="journal-back">
-        <a href="journal.html">← Back to Journal</a>
+      <div style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+        <a href="chronicles.html" style="font-family: var(--font-heading); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-dim); text-decoration: none;">← Back to Chronicles</a>
       </div>
 
     </div>
   </main>
 
   <footer class="site-footer">
-    <p class="footer-emblem">✦</p>
-    <p class="footer-guild">[ Guild Name Pending ]</p>
-    <p class="footer-tagline">Freeport · Est. in blood and better judgment</p>
-    <p class="footer-note">A living record — updated after every session</p>
+    <div class="footer-inner">
+      <p class="footer-guild">[ Guild Name Pending ]</p>
+      <p class="footer-tagline">Port Town · The Guild · Est. in blood and better judgment</p>
+      <p class="footer-note">A living record. Updated after every session.</p>
+    </div>
   </footer>
 
 </body>

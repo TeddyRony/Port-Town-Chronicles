@@ -3,129 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Party Roster — The Freeport Chronicles</title>
+  <title>Roster — The Port Town Chronicles</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/shared.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <nav class="site-nav">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-brand">Freeport Chronicles</a>
-      <div class="nav-links">
+  <div class="noise-overlay"></div>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="site-brand">
+        <div class="brand-emblem">✦</div>
+        <div class="brand-text">
+          <h1 class="site-title">The Port Town Chronicles</h1>
+          <p class="site-subtitle">A Record of the Guild — Compiled in Service &amp; in Blood</p>
+        </div>
+        <div class="brand-emblem">✦</div>
+      </div>
+      <nav class="site-nav">
         <a href="index.html" class="nav-link">Home</a>
-        <a href="journal.html" class="nav-link">Journal</a>
-        <a href="guild.html" class="nav-link active">The Guild</a>
-        <a href="tools.html" class="nav-link">Tools</a>
-        <a href="vault.html" class="nav-link">The Vault</a>
-        <a href="lore.html" class="nav-link">Lore</a>
-      </div>
+        <a href="chronicles.html" class="nav-link">Chronicles</a>
+        <a href="roster.html" class="nav-link active">Party Roster</a>
+        <a href="lore.html" class="nav-link">Lore &amp; Wiki</a>
+        <a href="homebrew.html" class="nav-link">Homebrew Rules</a>
+        <a href="maps.html" class="nav-link">Maps</a>
+      </nav>
     </div>
-  </nav>
-  <main class="page-main">
-    <header class="page-header">
-      <p class="page-eyebrow">The Guild · Active Members</p>
-      <h1 class="page-title">Party Roster</h1>
-      <p class="page-desc">Those who operate under the guild banner. Full profiles updated as characters are documented.</p>
-    </header>
-    <div class="page-content">
-      <div class="roster-grid">
-
-        <div class="roster-card">
-          <p class="roster-card-standing">Guild Member</p>
-          <h3 class="roster-card-name">Stilgar</h3>
-          <p class="roster-card-class">Human Myrmidon · Level 8 · Neutral Good</p>
-          <p class="roster-card-body">6'3", 230 lbs. Black hair, blue eyes. Field commander and record-keeper for Tedronai's operations in Freeport. Longest-serving operative. Reluctant leader by appointment — equally comfortable as just another blade on a team. Manages Tedronai's holdings when not in the field.<br><br>
-          <strong>Weapons:</strong> Two-handed sword (master), longsword (proficient)<br>
-          <strong>Armor:</strong> Full plate<br>
-          <strong>Items:</strong> Ring of Jumping, Ring of Feather Fall<br><br>
-          <strong>Proficiencies:</strong> Reading/Writing, Rope Use, Land-Based Riding, Iron Will, Endurance, Leadership, Fire Building, Ancient History</p>
-        </div>
-
-        <div class="roster-card">
-          <p class="roster-card-standing">Guild Employer</p>
-          <h3 class="roster-card-name">Tedronai</h3>
-          <p class="roster-card-class">Human Wild Mage · Level 13 · Chaotic Good</p>
-          <p class="roster-card-body">6'0", 185 lbs. Brown hair, green eyes. Still young. Employer of the guild and the mind behind its operations in Freeport. Rarely engages in direct combat — prefers to observe a fight from the rear and intervene precisely where needed. His DEX 16 surprises those who expect a bookish wizard, and his INT 21 — boosted over time by carefully acquired librams — surprises everyone else.<br><br>
-          A Wild Mage who keeps that fact close to his chest. Avoids casting spells directly for reasons he does not discuss, relying instead on items that consume charges. Few in the party know what he truly is. Fewer still have thought to ask.<br><br>
-          Owns a galleon and employs a scribe named Jarvis to manage records and correspondence.<br><br>
-          <strong>Weapons:</strong> Quarterstaff, Dagger of Throwing<br>
-          <strong>Items:</strong> Cloak of the Manta Ray, Slippers of Spider Climbing, Belt of Many Pouches, Ring of Regeneration, Ring of Protection</p>
-        </div>
-
-        <div class="roster-card">
-          <p class="roster-card-standing">Guild Member</p>
-          <h3 class="roster-card-name">Juniper</h3>
-          <p class="roster-card-class">Wood Elf Druid · Level 11</p>
-          <p class="roster-card-body">Forest druid and wanderer. 5'5", 112 lbs, red hair, green eyes. Worships Ehlonna. Carries a quarterstaff. Languages: Common, Druidic, Sylvan, Elvish, Treant, Goblin.</p>
-        </div>
-
-        <div class="roster-card">
-          <p class="roster-card-standing">Guild Associate</p>
-          <h3 class="roster-card-name">Dr. Jill Jensil</h3>
-          <p class="roster-card-class">Human Alchemist · Biogenesis · Resident Guild Alchemist</p>
-          <p class="roster-card-body">5'9", 110 lbs, 27 years old. Red hair, blue-green eyes. The guild encountered Dr. Jensil mid-experiment — the nature of which remains her business. Whatever she was working on left a mark. She now shares her body with Mrs. Hilde, a transformation almost certainly connected to her biogenesis research. Tedronai recognized her value immediately and made his case. She accepted.<br><br>
-          <strong>Dr. Jill Jensil:</strong> STR 10, DEX 9, CON 12, INT 17, WIS 13, CHA 9<br><br>
-          Those with the need to know are aware that Dr. Jensil also manifests as <strong>Mrs. Hilde</strong> — a hulking, barely-coherent alter ego with near-opposite capabilities. What triggers the transformation, how long it lasts, and whether Dr. Jensil retains any awareness during it are questions the guild has learned not to ask too loudly.<br><br>
-          <strong>Mrs. Hilde:</strong> STR 19, DEX 17, CON 18, INT 4, WIS 9, CHA 4<br><br>
-          Levels and abilities not formally tracked. The alchemy works. The rest is on a need-to-know basis.<br><br>
-          <strong>Proficiencies:</strong> Alchemy, Anatomy, Glassblowing, Reading/Writing, Brewing, Pottery, Herbalism, Agriculture, Cooking</p>
-        </div>
-          <p class="roster-card-class">Barbarian</p>
-          <p class="roster-card-body">Details to be added.</p>
-        </div>
-
-        <div class="roster-card">
-          <p class="roster-card-standing">Guild Member</p>
-          <h3 class="roster-card-name">Pyril</h3>
-          <p class="roster-card-class">Cleric</p>
-          <p class="roster-card-body">Details to be added.</p>
-        </div>
-
-        <div class="roster-card">
-          <p class="roster-card-standing">Guild Member</p>
-          <h3 class="roster-card-name">Keyo</h3>
-          <p class="roster-card-class">Monk</p>
-          <p class="roster-card-body">Details to be added.</p>
-        </div>
-
-        <div class="roster-card">
-          <p class="roster-card-standing">Guild Member</p>
-          <h3 class="roster-card-name">Diana</h3>
-          <p class="roster-card-class">Ranger</p>
-          <p class="roster-card-body">Details to be added.</p>
-        </div>
-
-        <div class="roster-card roster-card--retired">
-          <p class="roster-card-standing retired">Retired PC</p>
-          <h3 class="roster-card-name">Lord Klaude</h3>
-          <p class="roster-card-class">Lord of Freeport · Played by Colton</p>
-          <p class="roster-card-body">A long-running character now retired from active play — his level and standing too significant to run alongside the current party without breaking the game. Now serves as the lord of Freeport and the man behind the current mission, having provided Tedronai with the gem of true teleportation to retrieve the relic needed to end the siege. His full history is its own chronicle.</p>
-        </div>
-
-        <div class="roster-card roster-card--provisional">
-          <p class="roster-card-standing provisional">Provisional</p>
-          <h3 class="roster-card-name">Slip</h3>
-          <p class="roster-card-class">Rogue · Contracted</p>
-          <p class="roster-card-body">A contracted thief. In it for the coin — her words. Currently under evaluation. Has demonstrated resourcefulness under pressure.</p>
-        </div>
-
-        <div class="roster-card roster-card--provisional">
-          <p class="roster-card-standing provisional">Provisional</p>
-          <h3 class="roster-card-name">The Wizard</h3>
-          <p class="roster-card-class">Wizard · Stand-in</p>
-          <p class="roster-card-body">Rolled up on short notice when a character sheet went missing. Attempted to greet winged demon-serpents in Abyssal. Results were instructive. Full name pending.</p>
-        </div>
-
-      </div>
+  </header>
+  <main class="site-main">
+    <div class="page-header">
+      <p class="page-eyebrow">The Port Town Chronicles</p>
+      <h2 class="page-title"></h2>
+      <p class="page-desc"></p>
     </div>
+    <div class="stub-notice">This section is being built out. Check back after the next session.</div>
   </main>
   <footer class="site-footer">
-    <p class="footer-emblem">✦</p>
-    <p class="footer-guild">[ Guild Name Pending ]</p>
-    <p class="footer-tagline">Freeport · Est. in blood and better judgment</p>
-    <p class="footer-note">A living record — updated after every session</p>
+    <div class="footer-inner">
+      <p class="footer-guild">[ Guild Name Pending ]</p>
+      <p class="footer-tagline">Port Town · The Guild · Est. in blood and better judgment</p>
+      <p class="footer-note">A living record. Updated after every session.</p>
+    </div>
   </footer>
 </body>
 </html>
