@@ -8,11 +8,24 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/shared.css" />
+  <style>
+    .journal-section-label {
+      font-family: var(--font-heading);
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+      margin: 2.5rem 0 1.5rem;
+    }
+    .journal-section-label:first-child { margin-top: 0; }
+  </style>
 </head>
 <body>
   <nav class="site-nav">
     <div class="nav-inner">
-      <a href="index.html" class="nav-brand">Port Town Chronicles</a>
+      <a href="index.html" class="nav-brand">The Port Town Chronicles</a>
       <div class="nav-links">
         <a href="index.html" class="nav-link">Home</a>
         <a href="guild.html" class="nav-link">The Guild</a>
@@ -23,14 +36,19 @@
       </div>
     </div>
   </nav>
+
   <main class="page-main">
     <header class="page-header">
       <p class="page-eyebrow">Field Notes · In Service to Tedronai</p>
       <h1 class="page-title">Stilgar's Journal</h1>
       <p class="page-desc">A record of where the guild has gone, what it has faced, and who has proven worthy of trust. One entry per session, set down as faithfully as memory and ink allow.</p>
     </header>
+
     <div class="page-content">
+
+      <p class="journal-section-label">Stilgar's Field Journal</p>
       <div class="entry-list">
+
         <article class="entry-item">
           <div class="entry-item-meta">
             <span class="entry-tag">Field Journal</span>
@@ -41,9 +59,39 @@
           <p class="entry-item-excerpt">Lord Klaude gave Tedronai a gem. A gem of true teleportation, he called it — three uses, three locations, three pieces of some relic that will apparently end the siege on Port Town. Tedronai, in his infinite practicality, handed it directly to the party and sent us on our way with what I can only describe as "basic instructions."</p>
           <a href="entry-001.html" class="entry-item-link">Read Entry →</a>
         </article>
+
+        <article class="entry-item">
+          <div class="entry-item-meta">
+            <span class="entry-tag">Field Journal</span>
+            <span class="entry-dot">·</span>
+            <span class="entry-date">The pyramid — concluded</span>
+          </div>
+          <h3 class="entry-item-title"><a href="entry-002.html" style="color:inherit; text-decoration:none;">Entry II: The Descent Continues</a></h3>
+          <p class="entry-item-excerpt">We rested briefly at the threshold of the next level, which in hindsight was the last sensible thing we did for some time. Slip hit the ramp wrong and slid into the next room ahead of us. Nobody moved to catch her. We have been in this pyramid long enough to recognize inevitability when we see it.</p>
+          <a href="entry-002.html" class="entry-item-link">Read Entry →</a>
+        </article>
+
       </div>
+
+      <p class="journal-section-label">Correspondence</p>
+      <div class="entry-list">
+
+        <article class="entry-item">
+          <div class="entry-item-meta">
+            <span class="entry-tag">Letter · Unsolicited</span>
+            <span class="entry-dot">·</span>
+            <span class="entry-date">Paleback Village Region</span>
+          </div>
+          <h3 class="entry-item-title"><a href="letter-grimlute.html" style="color:inherit; text-decoration:none;">A Letter to Tedronai — from Corwin Grimlute</a></h3>
+          <p class="entry-item-excerpt">You do not know me, and I will not pretend otherwise. My name is Corwin Grimlute, and I am a bard by trade and inclination. I collect stories. I write to you because your guild has a reputation, and reputations are the currency of my profession.</p>
+          <a href="letter-grimlute.html" class="entry-item-link">Read Letter →</a>
+        </article>
+
+      </div>
+
     </div>
   </main>
+
   <footer class="site-footer">
     <p class="footer-emblem">✦</p>
     <p class="footer-guild">[ Guild Name Pending ]</p>
